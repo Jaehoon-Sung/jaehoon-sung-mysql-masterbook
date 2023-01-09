@@ -159,11 +159,11 @@ SELECT * FROM your_table_name
 
 #### Displaying a certain column you want to display only
 
-What would be the query statement to display `product` column only?
-
 ```
 SELECT column_name_you_want_to_display FROM your_table_name
 ```
+
+What would be the query statement to display `product` column only? Try it for yourself!
 
 #### Displaying two or more columns is possible..
 
@@ -199,8 +199,6 @@ This statement displays data in ascending order by your_column1, and after in de
 
 #### You can pass in the ordinal number of column for `ORDER BY`, not column name
 
-What will be displayed for the query statement shown below?
-
 ```
 | id  | product | category  | price |
 | --- | ------- | --------- | ----- |
@@ -213,7 +211,7 @@ What will be displayed for the query statement shown below?
 SELECT * FROM inventory ORDER BY 3 DESC
 ```
 
-It will display the 3rd column for the table, so you will see the whole data on `category` column.  
+It will display the table in descending order by category.  
 So, the query statement above is equal to `SELECT * FROM product ORDER BY category DESC`
 
 ### `WHERE` to filter your data!
@@ -224,9 +222,9 @@ You can use `WHERE` to display certain data which meet conditions given after `W
 SELECT your_column FROM your_table WHERE conditions_will_go_here
 ```
 
-The query statement above will return certain data on `your_column` which meets `conditions_will_go_here` only. Here, `conditions_will_go_here` has the form of syntax as `column_name = column_value_you_want_to_look_for`
+The query statement above will return certain data on `your_column` which meets `conditions_will_go_here` only. Here, `conditions_will_go_here` has the form of syntax as `column_name = column_value_you_want_to_look_for`.
 
-#### Example 1 : filtering products whose category is in furniture only
+#### Example 1 : filtering products, each of whose category is in furniture only
 
 ```
 | id  | product | category  | price |
@@ -240,7 +238,7 @@ The query statement above will return certain data on `your_column` which meets 
 SELECT * FROM inventory WHERE category = 'furniture'
 ```
 
-#### Example 2 : filtering products whose price is bigger than $4
+#### Example 2 : filtering products, each of whose price is bigger than $4
 
 ```
 | id  | product | category  | price |
@@ -326,9 +324,9 @@ The query statement above is the equal statement as
 SELECT * FROM inventory WHERE category IN ('furniture', 'clothes')
 ```
 
-Imagine the case when you want to pull data in thousand kinds of category, but NOT every category. Then, you might repeat `OR` countlessly. Then, `OR` will rescue. In addition, using `OR` will be easier to read! We don't want to see heavily repeated `OR column_name = ... OR column_name = ... OR ...`.
+Imagine the case when you want to pull data in thousand kinds of category, but NOT every category. Then, you might repeat `OR` countlessly. Then, `IN` will rescue. Using `IN` will be also easier to read! We don't want to see heavily repeated `OR column_name = ... OR column_name = ... OR ...`.
 
-You can only use `OR` for values included in the **SAME** column. For example, you cannot simplify the following statement using `OR`
+You can only use `OR` for values included in the **SAME** column. For example, you cannot simplify the following statement using `IN`
 
 ```
 SELECT * FROM inventory WHERE category = 'clothes' OR price = 3;
@@ -343,15 +341,3 @@ We can actually use `SELECT` **INSIDE** `IN`. This is one of the examples for SQ
 ## Part 5. Procedure / Function / Index / Transaction
 
 ## Part 6. DB Hosting / ERD (Entity Relationship Diagram) / SQL Injection
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
