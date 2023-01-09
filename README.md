@@ -134,7 +134,7 @@ Commands shown above are called `DDL`, `Data Definition Language`.
 
 ### SQL Data Types; will update soon...
 
-## Part 2. Do you know **EVERYTHING** about `SELECT` for sure? :D
+## Part 2. Do you know **EVERYTHING** about `SELECT` for sure? :laughing:
 
 So, what is the purpose to learn SQL language? It's simple. Can you pull, add, delete, and update any data you want? If so, you are done.  
 Here, we will learn how to display the data you want to see. Below is the table called `inventory` we will use.
