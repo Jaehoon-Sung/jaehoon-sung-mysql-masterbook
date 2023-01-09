@@ -130,11 +130,211 @@ ALTER TABLE your_table_name
 DROP COLUMN your_column_name;
 ```
 
-Commands shown above are called `DDL`, `Data Definition Language`, because these commands are used to define data we want to manage.
+Commands shown above are called `DDL`, `Data Definition Language`.
 
 ### SQL Data Types; will update soon...
 
 ## Part 2. Do you know **EVERYTHING** about `SELECT` for sure? :D
+
+So, what is the purpose to learn SQL language? It's simple. Can you pull, add, delete, and update any data you want? If so, you are done.  
+Here, we will learn how to display the data you want to see. Below is the table called `inventory` we will use.
+
+```
+| id  | product | category  | price |
+| --- | ------- | --------- | ----- |
+| 1   | shirt   | clothes   | 3     |
+| 2   | pants   | clothes   | 4     |
+| 3   | bed     | furniture | 5     |
+| 4   | chair   | furniture | 6     |
+| 5   | nike    | shoes     | 3     |
+```
+
+### Basics of `SELECT`
+
+#### Displaying every column of a table
+
+```
+SELECT * FROM your_table_name
+```
+
+#### Displaying a certain column you want to display only
+
+What would be the query statement to display `product` column only?
+
+```
+SELECT column_name_you_want_to_display FROM your_table_name
+```
+
+#### Displaying two or more columns is possible..
+
+```
+SELECT column1, column2 FROM your_table_name
+```
+
+### `SELECT` with `ORDER BY`
+
+You will have to display the data in a certain order for many cases. `ORDER BY` does it for you.
+
+#### Ascending order is default
+
+You can omit `ASC`, then SQL will display in ascending order by default.
+
+```
+SELECT * FROM your_table_name ORDER BY your_column_name ASC;
+```
+
+#### Descending order
+
+```
+SELECT * FROM your_table_name ORDER BY your_column_name DESC;
+```
+
+#### You can use `ORDER BY` more than once
+
+```
+SELECT * FROM your_table_name ORDER BY your_column1 ASC, your_column2 DESC;
+```
+
+This statement displays data in ascending order by your_column1, and after in descending order by your_column2 for data from the same your_column1 value.
+
+#### You can pass in the ordinal number of column for `ORDER BY`, not column name
+
+What will be displayed for the query statement shown below?
+
+```
+| id  | product | category  | price |
+| --- | ------- | --------- | ----- |
+| 1   | shirt   | clothes   | 3     |
+| 2   | pants   | clothes   | 4     |
+| 3   | bed     | furniture | 5     |
+| 4   | chair   | furniture | 6     |
+| 5   | nike    | shoes     | 3     |
+
+SELECT * FROM inventory ORDER BY 3 DESC
+```
+
+It will display the 3rd column for the table, so you will see the whole data on `category` column.  
+So, the query statement above is equal to `SELECT * FROM product ORDER BY category DESC`
+
+### `WHERE` to filter your data!
+
+You can use `WHERE` to display certain data which meet conditions given after `WHERE`. So,
+
+```
+SELECT your_column FROM your_table WHERE conditions_will_go_here
+```
+
+The query statement above will return certain data on `your_column` which meets `conditions_will_go_here` only. Here, `conditions_will_go_here` has the form of syntax as `column_name = column_value_you_want_to_look_for`
+
+#### Example 1 : filtering products whose category is in furniture only
+
+```
+| id  | product | category  | price |
+| --- | ------- | --------- | ----- |
+| 1   | shirt   | clothes   | 3     |
+| 2   | pants   | clothes   | 4     |
+| 3   | bed     | furniture | 5     |
+| 4   | chair   | furniture | 6     |
+| 5   | nike    | shoes     | 3     |
+
+SELECT * FROM inventory WHERE category = 'furniture'
+```
+
+#### Example 2 : filtering products whose price is bigger than $4
+
+```
+| id  | product | category  | price |
+| --- | ------- | --------- | ----- |
+| 1   | shirt   | clothes   | 3     |
+| 2   | pants   | clothes   | 4     |
+| 3   | bed     | furniture | 5     |
+| 4   | chair   | furniture | 6     |
+| 5   | nike    | shoes     | 3     |
+
+SELECT * FROM inventory WHERE price > 4
+```
+
+You can also use `>`, `<`, `>=`, `<=`, `=`, `!=`
+
+#### `BETWEEN` is useful
+
+```
+SELECT * FROM inventory WHERE price BETWEEN 3 AND 6
+```
+
+`BETWEEN 3 AND 6` is the same expression as `3 ≤ price ≤ 6`. **BE CAREFUL** to remember that `=` sign is included; so, the left and right boundaries are included.
+
+### `AND`, `OR`, and `NOT` for sophiscated conditions / Parentheses can be used for operator precedence!
+
+#### The code below returns data which meet BOTH condition1 AND condition2.
+
+```
+SELECT * FROM your_table
+WHERE condition1 AND condition2;
+```
+
+#### The code below returns data which meet EITHER condition1 OR condition2.
+
+```
+SELECT * FROM your_table
+WHERE condition1 OR condition2;
+```
+
+#### The code below returns data which does NOT meet condition1
+
+Just remember that `NOT` comes directly after `WHERE`
+
+```
+SELECT * FROM your_table
+WHERE NOT condition1;
+```
+
+#### You can use parentheses for operation precedence
+
+What will be the result for the query statement shown below?
+
+```
+| id  | product | category  | price |
+| --- | ------- | --------- | ----- |
+| 1   | shirt   | clothes   | 3     |
+| 2   | pants   | clothes   | 5     |
+| 3   | bed     | furniture | 5     |
+| 4   | chair   | furniture | 6     |
+| 5   | nike    | shoes     | 3     |
+
+SELECT * FROM inventory
+WHERE (category = 'furniture' OR category = 'clothes') AND price = 5
+```
+
+### Multiple `OR`s in the same column? Use `IN`!
+
+```
+| id  | product | category  | price |
+| --- | ------- | --------- | ----- |
+| 1   | shirt   | clothes   | 3     |
+| 2   | pants   | clothes   | 5     |
+| 3   | bed     | furniture | 5     |
+| 4   | chair   | furniture | 6     |
+| 5   | nike    | shoes     | 3     |
+
+SELECT * FROM inventory WHERE category = 'furniture' OR category = 'clothes'
+```
+
+The query statement above is the equal statement as
+
+```
+SELECT * FROM inventory WHERE category IN ('furniture', 'clothes')
+```
+
+Imagine the case when you want to pull data in thousand kinds of category, but NOT every category. Then, you might repeat `OR` countlessly. Then, `OR` will rescue. In addition, using `OR` will be easier to read! We don't want to see heavily repeated `OR column_name = ... OR column_name = ... OR ...`.
+
+You can only use `OR` for values included in the **SAME** column. For example, you cannot simplify the following statement using `OR`
+
+```
+SELECT * FROM inventory WHERE category = 'clothes' OR price = 3;
+```
+
+We can actually use `SELECT` **INSIDE** `IN`. This is one of the examples for SQL subquery. We will look into it, soon.
 
 ## Part 3. Normal Form : 1NF. 2NF. 3NF. etc...
 
@@ -143,3 +343,15 @@ Commands shown above are called `DDL`, `Data Definition Language`, because these
 ## Part 5. Procedure / Function / Index / Transaction
 
 ## Part 6. DB Hosting / ERD (Entity Relationship Diagram) / SQL Injection
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```
