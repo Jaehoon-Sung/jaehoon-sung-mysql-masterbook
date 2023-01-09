@@ -142,4 +142,4 @@ Commands shown above are called `DDL`, `Data Definition Language`, because these
 
 ## Part 5. Procedure / Function / Index / Transaction
 
-## Part 6. Additional things to learn : DB Hosting / ERD (Entity Relationship Diagram) / SQL Injection
+## Part 6. DB Hosting / ERD (Entity Relationship Diagram) / SQL Injection
