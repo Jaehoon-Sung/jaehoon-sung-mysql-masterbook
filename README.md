@@ -40,7 +40,9 @@ Famous graph database : `Neo4j`, `Sparsity`, `OrientDB`, `ArangoDB` and etc..
 
 ### There are three more types of databases I think important; will update soon...
 
-## Part 1. Basic Syntax for mySQL
+## Part 1. Basic Syntax for mySQL (DDL)
+
+Commands shown below are called `DDL`, `Data Definition Language`.
 
 ### Command to create a new database
 
@@ -130,11 +132,9 @@ ALTER TABLE your_table_name
 DROP COLUMN your_column_name;
 ```
 
-Commands shown above are called `DDL`, `Data Definition Language`.
-
 ### SQL Data Types; will update soon...
 
-## Part 2. Do you know **EVERYTHING** about `SELECT` for sure? :laughing:
+## Part 2-1. Do you know **EVERYTHING** about `SELECT` for sure? :laughing:
 
 So, what is the purpose to learn SQL language? It's simple. Can you pull, add, delete, and update any data you want? If so, you are done.  
 Here, we will learn how to display the data you want to see. Below is the table called `inventory` we will use.
@@ -214,7 +214,7 @@ SELECT * FROM inventory ORDER BY 3 DESC
 It will display the table in descending order by category.  
 So, the query statement above is equal to `SELECT * FROM product ORDER BY category DESC`
 
-### `WHERE` to filter your data!
+## Part 2-2. `WHERE` to filter your data!
 
 You can use `WHERE` to display certain data which meet conditions given after `WHERE`. So,
 
@@ -304,6 +304,8 @@ SELECT * FROM inventory
 WHERE (category = 'furniture' OR category = 'clothes') AND price = 5
 ```
 
+## Part 2-3. `OR` VS `IN` / `LIKE` with `%` and `_`
+
 ### Multiple `OR`s in the same column? Use `IN`!
 
 ```
@@ -333,6 +335,71 @@ SELECT * FROM inventory WHERE category = 'clothes' OR price = 3;
 ```
 
 We can actually use `SELECT` **INSIDE** `IN`. This is one of the examples for SQL subquery. We will look into it, soon.
+
+### `LIKE` with `%` and `_`
+
+`LIKE` helps you find values **containing** values after `LIKE`. Let's learn with the `inventory` table shown below.
+
+| id  | product          | category  | price |
+| --- | ---------------- | --------- | ----- |
+| 1   | nike shirt       | clothes   | 3     |
+| 2   | adidas shirt     | clothes   | 5     |
+| 3   | tshirt misc      | clothes   | 5     |
+| 4   | chair            | furniture | 4     |
+| 5   | wood chair       | furniture | 3     |
+| 6   | chair acces      | furniture | 2     |
+| 7   | nike shirt young | clothes   | 3     |
+| 8   | adidas shirt new | clothes   | 5     |
+| 9   | tshirt           | clothes   | 4     |
+| 10  | steel chair      | furniture | 6     |
+| 11  | chair repair     | furniture | 3     |
+
+`SELECT * FROM inventory WHERE product = 'shirt'` won't give you any data. It is because there is no data whose `product` value is exactly **shirt**.  
+How about `SELECT * FROM inventory WHERE product LIKE 'shirt'`? This also returns **NO** data. `Like 'shirt'` is actually same as `= 'shirt'`. To make use of `LIKE`, you must use wild-card characters such as `%` and `_`!
+
+#### `LIKE` with `%`
+
+`%` means any string regardless the number of its characters. Let's dive into the examples.
+
+```
+SELECT * FROM inventory WHERE product LIKE 'shirt%'
+```
+
+This statement allows us to display any values that starts with "shirt". Actually, there is nothing that starts with "shirt" in the table shown above.
+
+```
+SELECT * FROM inventory WHERE product LIKE '%shirt'
+```
+
+This statement allows us to display any values that ends with "shirt". You can find what would be displayed! See the product name which ends with "shirt".
+
+```
+SELECT * FROM inventory WHERE product LIKE '%shirt%'
+```
+
+This statement allows us to display any values that contains "shirt", because `%` is appended before and after "shirt". Guess what will be displayed!
+
+#### `LIKE` with `_`
+
+`_` plays a similar role as `%` did, but it **cares** about the number of characters. Let's dive into the examples.
+
+```
+SELECT * FROM inventory WHERE product LIKE '_shirt'
+```
+
+Let's count the number of `_`. There is only **one** \_, isn't it? So, this statement will return data whose `product` value has a single charactor followed by "shirt". So, it will return a row for product `tshirt`. (**NOT** `tshirt misc`, do you see why? If you want to get a row for `tshirt misc`, what should the query statement look like?)
+
+Similarly, the statement below will return data whose `product` value has "shirt" followed by two characters exactly.
+
+```
+SELECT * FROM inventory WHERE product LIKE 'shirt__'
+```
+
+You can mix `%` and `_`! The statement below will return data whose `product` value has a single character followed by "shirt" and ends with any string (or just ends with no trailing character.)
+
+```
+SELECT * FROM inventory WHERE product LIKE '_shirt%'
+```
 
 ## Part 3. Normal Form : 1NF. 2NF. 3NF. etc...
 
