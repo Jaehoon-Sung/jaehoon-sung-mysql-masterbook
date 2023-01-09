@@ -418,7 +418,7 @@ By declaring a type of `product` column as `CHAR(10)`, if you pass a string `cha
 
 If `LIKE` with `%` and `_` does not work as you intend, it will be always useful to check if you play with a `CHAR` data type! :D
 
-## PRO-TOP 2 : Using `%` too many times is actually inefficient.
+### PRO-TOP 2 : Using `%` too many times is actually inefficient.
 
 Using `%` too many times to query the DB is actually not the best. This problem is related to `index` problem, which we will look into later. If you can output the same results with some operators not too complicatedly, I would recommend to go for them, not using `%` too much. Well, `%` is the easiest to use, because this is wild-card! :)
 
