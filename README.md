@@ -387,7 +387,7 @@ How about `SELECT * FROM inventory WHERE product LIKE 'shirt'`? This also return
 > SELECT * FROM inventory WHERE product LIKE '_shirt'
 > ```
 >
-> Let's count the number of `_`. There is only **one** \_, isn't it? So, this statement will return data whose `product` value has a single charactor followed by "shirt". So, it will return a row for product `tshirt`. (**NOT** `tshirt misc`, do you see why? If you want to get a row for `tshirt misc`, what should the query statement look like?)
+> Let's count the number of `_`. There is only **one** \_ , isn't it? So, this statement will return data whose `product` value has a single charactor followed by "shirt". So, it will return a row for product `tshirt`. (**NOT** `tshirt misc`, do you see why? If you want to get a row for `tshirt misc`, what should the query statement look like?)
 
 > Similarly, the statement below will return data whose `product` value has "shirt" followed by two characters exactly
 >
@@ -395,15 +395,25 @@ How about `SELECT * FROM inventory WHERE product LIKE 'shirt'`? This also return
 > SELECT * FROM inventory WHERE product LIKE 'shirt__'
 > ```
 
-> You can mix `%` and `_`! The statement below will return data whose `product` value has a single character followed by "shirt" and ends with any string (or >just ends with no trailing character.)
+> You can mix `%` and `_`! The statement below will return data whose `product` value has a single character followed by "shirt" and ends with any string (or > just ends with no trailing character.)
 >
 > ```
 > SELECT * FROM inventory WHERE product LIKE '_shirt%'
 > ```
 
-## Part 3. Normal Form : 1NF. 2NF. 3NF. etc...
+## Part 2-4. Statistics / Some NUMBER statements / Some STRING statements
 
-## Part 4. Join / CRUDing data
+### Statistics with `MIN`, `MAX`, `AVG`, and `SUM`
+
+### Some useful NUMBER statements
+
+### Some useful STRING statements
+
+## Part 2-5. `GROUP BY` / `SELECT` in `SELECT` : sub-query!
+
+## Part 3-1. Normal Form : 1NF. 2NF. 3NF. etc...
+
+## Part 3-2. Join / CRUDing data
 
 ## Part 5. Procedure / Function / Index / Transaction
 
