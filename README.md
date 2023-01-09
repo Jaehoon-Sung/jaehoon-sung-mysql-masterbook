@@ -365,7 +365,7 @@ How about `SELECT * FROM inventory WHERE product LIKE 'shirt'`? This also return
 > SELECT * FROM inventory WHERE product LIKE 'shirt%'
 > ```
 >
-> This statement allows us to display any values that starts with "shirt". Actually, there is nothing that starts with "shirt" in the table shown above.
+> This statement allows us to display any values that starts with "shirt". Actually, there is nothing that starts with "shirt" in the example table.
 
 > ```
 > SELECT * FROM inventory WHERE product LIKE '%shirt'
