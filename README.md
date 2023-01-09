@@ -426,16 +426,22 @@ Welcome to JAE Credit Card. Below is the `customers` table showing the list of u
 > ```
 >
 > The statement above will return the maximum value of `total-amount-spent` values. **REMEMBER** that this does not return a whole row which contains the corresponding maximum value. It just returns the maximum value of `total-amount-spent` shown as below.
+>
+> ```
 > | total-amount-spent |
 > |150000|
+> ```
 
 > ```
 > SELECT MIN(total-amount-spent) FROM customers`
 > ```
 >
 > Similarly, the statement above will return the minimum value of `total-amount-spent` values shown as below.
+>
+> ```
 > | total-amount-spent |
 > |100|
+> ```
 
 ### Some useful NUMBER statements
 
@@ -450,3 +456,7 @@ Welcome to JAE Credit Card. Below is the `customers` table showing the list of u
 ## Part 5. Procedure / Function / Index / Transaction
 
 ## Part 6. DB Hosting / ERD (Entity Relationship Diagram) / SQL Injection
+
+```
+
+```
