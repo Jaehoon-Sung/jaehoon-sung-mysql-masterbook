@@ -401,6 +401,27 @@ How about `SELECT * FROM inventory WHERE product LIKE 'shirt'`? This also return
 > SELECT * FROM inventory WHERE product LIKE '_shirt%'
 > ```
 
+### PRO-TIP 1 : **BE CAREFUL** to use `LIKE` for a `CHAR()` data type
+
+I dare say that you might come across the errors shown below, when you use `LIKE` with `%` and `_` for `CHAR()` data.
+
+| id  | product | category  | price |
+| --- | ------- | --------- | ----- |
+| 1   | nike    | clothes   | 3     |
+| 2   | adidas  | clothes   | 5     |
+| 3   | tshirt  | clothes   | 5     |
+| 4   | chair   | furniture | 4     |
+
+Let's assume that a data type for `product` column is `CHAR(10)`. Then, what will be the result for `LIKE '%chair'`? Using what we have learned so far, I think that most of you would say 'chair', because '%chair' means any string (including no character) followed by `chair`. But actually, it will return **NOTHING**. What happened?
+
+By declaring a type of `product` column as `CHAR(10)`, if you pass a string `chair` into that column, the table will add trailing spaces to make each string's length 10 **exactly**. So, `'chair'` is actually saved as `'chair_____'`. So, this `'chair_____'` does not suffice `LIKE '%chair'`, because there are trailing space characters following 'chair'.
+
+If `LIKE` with `%` and `_` does not work as you intend, it will be always useful to check if you play with a `CHAR` data type! :D
+
+## PRO-TOP 2 : Using `%` too many times is actually inefficient.
+
+Using `%` too many times to query the DB is actually not the best. This problem is related to `index` problem, which we will look into later. If you can output the same results with some operators not too complicatedly, I would recommend to go for them, not using `%` too much. Well, `%` is the easiest to use, because this is wild-card! :)
+
 ## Part 2-4. Statistics / Some NUMBER statements / Some STRING statements
 
 Welcome to JAE Credit Card. Below is the `customers` table showing the list of users for JAE Platinum Card.
@@ -422,7 +443,7 @@ Welcome to JAE Credit Card. Below is the `customers` table showing the list of u
 > `SELECT total-amount-spent FROM customers` will return the whole data on `total-amount-spent` column.
 
 > ```
-> SELECT MAX(total-amount-spent) FROM customers`
+> SELECT MAX(total-amount-spent) FROM customers
 > ```
 >
 > The statement above will return the maximum value of `total-amount-spent` values. **REMEMBER** that this does not return a whole row which contains the corresponding maximum value. It just returns the maximum value of `total-amount-spent` shown as below.
@@ -430,11 +451,11 @@ Welcome to JAE Credit Card. Below is the `customers` table showing the list of u
 > ```
 > | total-amount-spent |
 > | ------------------ |
-> | 150000             |
+> |       150000       |
 > ```
 
 > ```
-> SELECT MIN(total-amount-spent) FROM customers`
+> SELECT MIN(total-amount-spent) FROM customers
 > ```
 >
 > Similarly, the statement above will return the minimum value of `total-amount-spent` values shown as below.
@@ -442,8 +463,20 @@ Welcome to JAE Credit Card. Below is the `customers` table showing the list of u
 > ```
 > | total-amount-spent |
 > | ------------------ |
-> | 100                |
+> |        100         |
 > ```
+
+> ```
+> SELECT AVG(num-of-late-payments) FROM customers
+> ```
+>
+> The statement above will return the average value of `num-of-late-payments`.
+
+> ```
+> SELECT SUM(num-of-late-payments) FROM customers
+> ```
+>
+> The statement above will return the sum of `num-of-late-payments`.
 
 ### Some useful NUMBER statements
 
@@ -458,7 +491,3 @@ Welcome to JAE Credit Card. Below is the `customers` table showing the list of u
 ## Part 5. Procedure / Function / Index / Transaction
 
 ## Part 6. DB Hosting / ERD (Entity Relationship Diagram) / SQL Injection
-
-```
-
-```
