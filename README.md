@@ -429,7 +429,7 @@ Welcome to JAE Credit Card. Below is the `customers` table showing the list of u
 >
 > ```
 > | total-amount-spent |
-> |150000|
+> |       150000       |
 > ```
 
 > ```
@@ -440,7 +440,7 @@ Welcome to JAE Credit Card. Below is the `customers` table showing the list of u
 >
 > ```
 > | total-amount-spent |
-> |100|
+> |        100         |
 > ```
 
 ### Some useful NUMBER statements
