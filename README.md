@@ -403,7 +403,39 @@ How about `SELECT * FROM inventory WHERE product LIKE 'shirt'`? This also return
 
 ## Part 2-4. Statistics / Some NUMBER statements / Some STRING statements
 
+Welcome to JAE Credit Card. Below is the `customers` table showing the list of users for JAE Platinum Card.
+
+| id  | name     | num-of-checkouts | total-amount-spent | membership-rank | num-of-late-payments |
+| --- | -------- | ---------------- | ------------------ | --------------- | -------------------- |
+| 1   | Jay      | 3                | 250                | family          | 0                    |
+| 2   | Robert   | 45               | 150000             | vip             | 0                    |
+| 3   | Mitchell | 52               | 3200               | royal           | 8                    |
+| 4   | Jane     | 121              | 25000              | vip             | 5                    |
+| 5   | Mickey   | 21               | 1250               | family          | 1                    |
+| 6   | Grace    | 63               | 100                | family          | 1                    |
+| 7   | Harry    | 87               | 16500              | vip             | 2                    |
+| 8   | Alex     | 17               | 2500               | royal           | 3                    |
+
 ### Statistics with `MIN`, `MAX`, `AVG`, and `SUM`
+
+> This is for a quick review.
+> `SELECT total-amount-spent FROM customers` will return the whole data on `total-amount-spent` column.
+
+> ```
+> SELECT MAX(total-amount-spent) FROM customers`
+> ```
+>
+> The statement above will return the maximum value of `total-amount-spent` values. **REMEMBER** that this does not return a whole row which contains the corresponding maximum value. It just returns the maximum value of `total-amount-spent` shown as below.
+> | total-amount-spent |
+> |150000|
+
+> ```
+> SELECT MIN(total-amount-spent) FROM customers`
+> ```
+>
+> Similarly, the statement above will return the minimum value of `total-amount-spent` values shown as below.
+> | total-amount-spent |
+> |100|
 
 ### Some useful NUMBER statements
 
