@@ -361,23 +361,23 @@ How about `SELECT * FROM inventory WHERE product LIKE 'shirt'`? This also return
 
 `%` means any string regardless the number of its characters. Let's dive into the examples.
 
-```
-SELECT * FROM inventory WHERE product LIKE 'shirt%'
-```
+> ```
+> SELECT * FROM inventory WHERE product LIKE 'shirt%'
+> ```
+>
+> This statement allows us to display any values that starts with "shirt". Actually, there is nothing that starts with "shirt" in the table shown above.
 
-This statement allows us to display any values that starts with "shirt". Actually, there is nothing that starts with "shirt" in the table shown above.
+> ```
+> SELECT * FROM inventory WHERE product LIKE '%shirt'
+> ```
+>
+> This statement allows us to display any values that ends with "shirt". You can find what would be displayed! See the product name which ends with "shirt".
 
-```
-SELECT * FROM inventory WHERE product LIKE '%shirt'
-```
-
-This statement allows us to display any values that ends with "shirt". You can find what would be displayed! See the product name which ends with "shirt".
-
-```
-SELECT * FROM inventory WHERE product LIKE '%shirt%'
-```
-
-This statement allows us to display any values that contains "shirt", because `%` is appended before and after "shirt". Guess what will be displayed!
+> ```
+> SELECT * FROM inventory WHERE product LIKE '%shirt%'
+> ```
+>
+> This statement allows us to display any values that contains "shirt", because `%` is appended before and after "shirt". Guess what will be displayed!
 
 #### `LIKE` with `_`
 
