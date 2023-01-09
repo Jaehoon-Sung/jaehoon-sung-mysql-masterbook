@@ -381,8 +381,8 @@ This statement allows us to display any values that contains "shirt", because `%
 
 #### `LIKE` with `_`
 
-> `_` plays a similar role as `%` did, but it **cares** about the number of characters. Let's dive into the examples.
->
+`_` plays a similar role as `%` did, but it **cares** about the number of characters. Let's dive into the examples.
+
 > ```
 > SELECT * FROM inventory WHERE product LIKE '_shirt'
 > ```
@@ -395,11 +395,11 @@ This statement allows us to display any values that contains "shirt", because `%
 > SELECT * FROM inventory WHERE product LIKE 'shirt__'
 > ```
 
-You can mix `%` and `_`! The statement below will return data whose `product` value has a single character followed by "shirt" and ends with any string (or just ends with no trailing character.)
-
-```
-SELECT * FROM inventory WHERE product LIKE '_shirt%'
-```
+> You can mix `%` and `_`! The statement below will return data whose `product` value has a single character followed by "shirt" and ends with any string (or >just ends with no trailing character.)
+>
+> ```
+> SELECT * FROM inventory WHERE product LIKE '_shirt%'
+> ```
 
 ## Part 3. Normal Form : 1NF. 2NF. 3NF. etc...
 
