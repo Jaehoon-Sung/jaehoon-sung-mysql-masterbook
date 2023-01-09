@@ -326,7 +326,7 @@ SELECT * FROM inventory WHERE category IN ('furniture', 'clothes')
 
 Imagine the case when you want to pull data in thousand kinds of category, but NOT every category. Then, you might repeat `OR` countlessly. Then, `IN` will rescue. Using `IN` will be also easier to read! We don't want to see heavily repeated `OR column_name = ... OR column_name = ... OR ...`.
 
-You can only use `OR` for values included in the **SAME** column. For example, you cannot simplify the following statement using `IN`
+You can only use `IN` for values included in the **SAME** column. For example, you cannot simplify the following statement using `IN`
 
 ```
 SELECT * FROM inventory WHERE category = 'clothes' OR price = 3;
