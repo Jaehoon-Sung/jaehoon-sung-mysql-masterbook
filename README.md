@@ -381,19 +381,19 @@ This statement allows us to display any values that contains "shirt", because `%
 
 #### `LIKE` with `_`
 
-`_` plays a similar role as `%` did, but it **cares** about the number of characters. Let's dive into the examples.
+> `_` plays a similar role as `%` did, but it **cares** about the number of characters. Let's dive into the examples.
+>
+> ```
+> SELECT * FROM inventory WHERE product LIKE '_shirt'
+> ```
+>
+> Let's count the number of `_`. There is only **one** \_, isn't it? So, this statement will return data whose `product` value has a single charactor followed by "shirt". So, it will return a row for product `tshirt`. (**NOT** `tshirt misc`, do you see why? If you want to get a row for `tshirt misc`, what should the query statement look like?)
 
-```
-SELECT * FROM inventory WHERE product LIKE '_shirt'
-```
-
-Let's count the number of `_`. There is only **one** \_, isn't it? So, this statement will return data whose `product` value has a single charactor followed by "shirt". So, it will return a row for product `tshirt`. (**NOT** `tshirt misc`, do you see why? If you want to get a row for `tshirt misc`, what should the query statement look like?)
-
-Similarly, the statement below will return data whose `product` value has "shirt" followed by two characters exactly.
-
-```
-SELECT * FROM inventory WHERE product LIKE 'shirt__'
-```
+> Similarly, the statement below will return data whose `product` value has "shirt" followed by two characters exactly
+>
+> ```
+> SELECT * FROM inventory WHERE product LIKE 'shirt__'
+> ```
 
 You can mix `%` and `_`! The statement below will return data whose `product` value has a single character followed by "shirt" and ends with any string (or just ends with no trailing character.)
 
