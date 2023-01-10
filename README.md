@@ -43,7 +43,7 @@ Famous graph database : `Neo4j`, `Sparsity`, `OrientDB`, `ArangoDB` and etc..
 COMING SOON
 ```
 
-## Part 1. Basic Syntax for mySQL (DDL)
+## Part 1-1. Basic Syntax for mySQL (DDL)
 
 Commands shown below are called `DDL`, `Data Definition Language`.
 
@@ -109,7 +109,7 @@ CREATE TABLE person (
 > ```
 
 > #### Command to change a data type of a column
-
+>
 > ```
 >
 > ALTER TABLE your_table_name
@@ -117,7 +117,7 @@ CREATE TABLE person (
 >
 > ```
 >
-> **BE CAREFUL!** Let's assume that string values already exist in a certain column named `nickname`. Then, the data type of the `nickname` column cannot be changed into a `INT` type or some number types. So it is more desirable that we should not make any major situation where we change data types in SQL. In practice, DB managers create a totally new table with desired types, and copy data appropriately from the table to be changed.
+> **BE CAREFUL!** This command does not work for all kinds of types. For example, let's assume that string values already exist in a certain column named `nickname`. Then, the data type of the `nickname` column cannot be changed into an `INT` type or some number types. So it is more desirable that we should not make any major situation where we should change data types using `MODIFY COLUMN` in SQL. In practice, DB managers create a totally new table with desired types, and copy data appropriately from the table to be changed.
 
 > #### Command to delete a column
 >
@@ -127,6 +127,10 @@ CREATE TABLE person (
 > DROP COLUMN your_column_name;
 >
 > ```
+
+## Part 1-2. SQL Data Types
+
+## Part 1-3. Columns with constraints
 
 ### Create a new table with a `DEFAULT` value
 
@@ -140,8 +144,6 @@ name VARCHAR(100) DEFAULT 'Jaehoon Sung',
 age INT
 )
 ```
-
-### SQL Data Types; will update soon...
 
 ## Part 2-1. Do you know **EVERYTHING** about `SELECT` for sure? :laughing:
 
