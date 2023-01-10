@@ -104,7 +104,7 @@ Commands shown below are called `DDL`, `Data Definition Language`.
 >
 > ```
 > ALTER TABLE your_table_name
-> ADD your_new_column_name VARCHAR(100);
+> ADD your_new_column_name DATATYPE;
 > ```
 
 > #### Command to change a data type of a column
@@ -148,10 +148,10 @@ Let's revisit the `ADD` query statement.
 
 ```
 ALTER TABLE your_table_name
-ADD your_new_column_name VARCHAR(100);
+ADD your_new_column_name DATATYPE;
 ```
 
-Recall that each value for a new column will be `NULL` by default, if there are already some rows on a table. What should we do if we want to fill each value for a new colum using our customized value? (Hint : we just learned it.)
+Recall that each value for a new column will be `NULL` by default, if there are already some rows on a table. What should we do to fill each value for a new column using our customized value? (Hint : we just learned it.)
 
 ## Part 2-1. Do you know **EVERYTHING** about `SELECT` for sure? :laughing:
 
@@ -172,110 +172,97 @@ Here, we will learn how to display the data you want to see. Below is the table 
 
 ### Basics of `SELECT`
 
-#### Displaying every column of a table
+> #### Displaying every column of a table
+>
+> ```
+> SELECT * FROM your_table_name
+> ```
 
-```
+> #### Displaying a certain column you want to display only
+>
+> ```
+> SELECT column_name_you_want_to_display FROM your_table_name
+> ```
+>
+> What would be the query statement to display `product` column only? Try it for yourself!
 
-SELECT \* FROM your_table_name
-
-```
-
-#### Displaying a certain column you want to display only
-
-```
-
-SELECT column_name_you_want_to_display FROM your_table_name
-
-```
-
-What would be the query statement to display `product` column only? Try it for yourself!
-
-#### Displaying two or more columns is possible..
-
-```
-
-SELECT column1, column2 FROM your_table_name
-
-```
+> #### Displaying two or more columns is possible..
+>
+> ```
+> SELECT column1, column2 FROM your_table_name
+> ```
 
 ### `SELECT` with `ORDER BY`
 
 You will have to display the data in a certain order for many cases. `ORDER BY` does it for you.
 
-#### Ascending order is default
+> #### Ascending order is default
+>
+> You can omit `ASC`, then SQL will display in ascending order by default.
+>
+> ```
+> SELECT * FROM your_table_name ORDER BY your_column_name ASC;
+> ```
 
-You can omit `ASC`, then SQL will display in ascending order by default.
+> #### Descending order
+>
+> ```
+> SELECT * FROM your_table_name ORDER BY your_column_name DESC;
+> ```
 
-```
+> #### You can use `ORDER BY` more than once
+>
+> ```
+> SELECT * FROM your_table_name ORDER BY your_column1 ASC, your_column2 DESC;
+> ```
+>
+> This statement displays data in ascending order by your_column1, and after in descending order by your_column2 for data from the same your_column1 value.
 
-SELECT \* FROM your_table_name ORDER BY your_column_name ASC;
-
-```
-
-#### Descending order
-
-```
-
-SELECT \* FROM your_table_name ORDER BY your_column_name DESC;
-
-```
-
-#### You can use `ORDER BY` more than once
-
-```
-
-SELECT \* FROM your_table_name ORDER BY your_column1 ASC, your_column2 DESC;
-
-```
-
-This statement displays data in ascending order by your_column1, and after in descending order by your_column2 for data from the same your_column1 value.
-
-#### You can pass in the ordinal number of column for `ORDER BY`, not column name
-
-```
-
-| id  | product | category  | price |
-| --- | ------- | --------- | ----- |
-| 1   | shirt   | clothes   | 3     |
-| 2   | pants   | clothes   | 4     |
-| 3   | bed     | furniture | 5     |
-| 4   | chair   | furniture | 6     |
-| 5   | nike    | shoes     | 3     |
-
-SELECT \* FROM inventory ORDER BY 3 DESC
-
-```
-
-It will display the table in descending order by category.
-So, the query statement above is equal to `SELECT * FROM product ORDER BY category DESC`
+> #### You can pass in the ordinal number of column for `ORDER BY`, instead of column name
+>
+> ```
+>
+> | id  | product | category  | price |
+> | --- | ------- | --------- | ----- |
+> | 1   | shirt   | clothes   | 3     |
+> | 2   | pants   | clothes   | 4     |
+> | 3   | bed     | furniture | 5     |
+> | 4   | chair   | furniture | 6     |
+> | 5   | nike    | shoes     | 3     |
+> ```
+>
+> ```
+> SELECT \* FROM inventory ORDER BY 3 DESC
+> ```
+>
+> It will display the table in descending order by category.
+> So, the query statement above is equal to `SELECT * FROM product ORDER BY category DESC`
 
 ## Part 2-2. `WHERE` to filter your data!
 
 You can use `WHERE` to display certain data which meet conditions given after `WHERE`. So,
 
 ```
-
 SELECT your_column FROM your_table WHERE conditions_will_go_here
-
 ```
 
 The query statement above will return certain data on `your_column` which meets `conditions_will_go_here` only. Here, `conditions_will_go_here` has the form of syntax as `column_name = column_value_you_want_to_look_for`.
 
-#### Example 1 : filtering products, each of whose category is in furniture only
-
-```
-
-| id  | product | category  | price |
-| --- | ------- | --------- | ----- |
-| 1   | shirt   | clothes   | 3     |
-| 2   | pants   | clothes   | 4     |
-| 3   | bed     | furniture | 5     |
-| 4   | chair   | furniture | 6     |
-| 5   | nike    | shoes     | 3     |
-
-SELECT \* FROM inventory WHERE category = 'furniture'
-
-```
+> #### Example 1 : filtering products, each of whose category is in furniture only
+>
+> ```
+>
+> | id  | product | category  | price |
+> | --- | ------- | --------- | ----- |
+> | 1   | shirt   | clothes   | 3     |
+> | 2   | pants   | clothes   | 4     |
+> | 3   | bed     | furniture | 5     |
+> | 4   | chair   | furniture | 6     |
+> | 5   | nike    | shoes     | 3     |
+>
+> SELECT * FROM inventory WHERE category = 'furniture'
+>
+> ```
 
 #### Example 2 : filtering products, each of whose price is bigger than $4
 
@@ -295,7 +282,7 @@ SELECT \* FROM inventory WHERE price > 4
 
 You can also use `>`, `<`, `>=`, `<=`, `=`, `!=`
 
-#### `BETWEEN` is useful
+### `BETWEEN` is useful
 
 ```
 
@@ -618,3 +605,7 @@ Again, we don't have to memorize all the statements shown below. Let's just reme
 ## Part 5. Procedure / Function / Index / Transaction
 
 ## Part 6. DB Hosting / ERD (Entity Relationship Diagram) / SQL Injection
+
+```
+
+```
