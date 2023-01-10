@@ -421,6 +421,8 @@ How about `SELECT * FROM inventory WHERE product LIKE 'shirt'`? This also return
 > ```
 > SELECT * FROM inventory WHERE product LIKE 'shirt__'
 > ```
+>
+> `LIKE '\_VALUE\_' is possible, of course!
 
 ### `%` and `_` come together
 
@@ -482,8 +484,8 @@ Below is the `customers` table showing the list of users for JAE Platinum Card.
 > This is for a quick review.
 > `SELECT total-amount-spent FROM customers` will return the whole data on `total-amount-spent` column.
 
-#### `MAX(column_name)`
-
+> #### `MAX(column_name)`
+>
 > ```
 > SELECT MAX(total-amount-spent) FROM customers
 > ```
@@ -496,8 +498,8 @@ Below is the `customers` table showing the list of users for JAE Platinum Card.
 > |          150000          |
 > ```
 
-#### `MIN(column_name)`
-
+> #### `MIN(column_name)`
+>
 > ```
 > SELECT MIN(total-amount-spent) FROM customers
 > ```
@@ -510,16 +512,16 @@ Below is the `customers` table showing the list of users for JAE Platinum Card.
 > |           100           |
 > ```
 
-#### `AVG(column_name)`
-
+> #### `AVG(column_name)`
+>
 > ```
 > SELECT AVG(num-of-late-payments) FROM customers
 > ```
 >
 > The statement above will return the average value of `num-of-late-payments`.
 
-#### `SUM(column_name)`
-
+> #### `SUM(column_name)`
+>
 > ```
 > SELECT SUM(num-of-late-payments) FROM customers
 > ```
@@ -541,18 +543,18 @@ Let's recall the `customers` table again.
 | 7   | Harry    | 87               | 16500              | vip             | 2                    |
 | 8   | Alex     | 17               | 2500               | royal           | 3                    |
 
-#### `COUNT()` to count the number of rows
-
+> #### `COUNT()` to count the number of rows
+>
 > ```
 > SELECT COUNT(total-amount-spent) FROM customers
 > ```
 >
 > The statement above will return the **number** of rows.
 >
-> Someone asks me : "Does it return the same result as `SELECT COUNT(*) FROM customers`?" YES, it does. The point is that `COUNT` just returns the number of rows.
+> Someone asks me : "Would `SELECT COUNT(*) FROM customers` return the same result above?" YES, it does. The point is that `COUNT` just returns the number of rows.
 
-#### `AS` to rename a column as an alias.
-
+> #### `AS` to rename a column as an alias.
+>
 > Let's focus on the column name of the data which is returned by `MAX`, `MIN`, etc...
 >
 > ```
@@ -561,7 +563,7 @@ Let's recall the `customers` table again.
 >
 > ```
 > |  MAX(total-amount-spent) |
-> |    ------------------    |
+> |--------------------------|
 > |          150000          |
 > ```
 >
@@ -575,7 +577,7 @@ Let's recall the `customers` table again.
 >
 > ```
 > |       maximum-spent      |
-> |    ------------------    |
+> |--------------------------|
 > |          150000          |
 > ```
 
