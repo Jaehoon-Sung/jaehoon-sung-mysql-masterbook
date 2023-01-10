@@ -73,20 +73,20 @@ Commands shown below are called `DDL`, `Data Definition Language`.
 >    ...
 > );
 > ```
-
-#### Example 1 : creating a new table named `person` with three columns
-
-Common Mistake : Do **NOT** add `,` after the last column's data type. See there is **NO** comma after `age INT` in the code shown below.
-
-Some developers write data types in lowercase, but here most of data types have been written in uppercase to clarify that they are part of SQL statements.
-
-```
-CREATE TABLE person (
-    id INT,
-    name VARCHAR(100),
-    age INT
-)
-```
+>
+> #### Example 1 : creating a new table named `person` with three columns
+>
+> Common Mistake : Do **NOT** add `,` after the last column's data type. See there is **NO** comma after `age INT` in the code shown below.
+>
+> Some developers write data types in lowercase, but here most of data types have been written in uppercase to clarify that they are part of SQL statements.
+>
+> ```
+> CREATE TABLE person (
+>    id INT,
+>    name VARCHAR(100),
+>    age INT
+> )
+> ```
 
 > #### Command to delete a table
 >
@@ -100,8 +100,7 @@ CREATE TABLE person (
 
 > #### Command to create a new column in a table
 >
-> If there are already some rows on a table, each value for a new column will be `NULL` by default.  
->  What should we do if we want to pass another default value? (Hint : we already learned this above.)
+> If there are already some rows on a table, each value for a new column will be `NULL` by default.
 >
 > ```
 > ALTER TABLE your_table_name
@@ -111,10 +110,8 @@ CREATE TABLE person (
 > #### Command to change a data type of a column
 >
 > ```
->
 > ALTER TABLE your_table_name
 > MODIFY COLUMN your_column_name DATATYPE;
->
 > ```
 >
 > **BE CAREFUL!** This command does not work for all kinds of types. For example, let's assume that string values already exist in a certain column named `nickname`. Then, the data type of the `nickname` column cannot be changed into an `INT` type or some number types. So it is more desirable that we should not make any major situation where we should change data types using `MODIFY COLUMN` in SQL. In practice, DB managers create a totally new table with desired types, and copy data appropriately from the table to be changed.
@@ -122,13 +119,15 @@ CREATE TABLE person (
 > #### Command to delete a column
 >
 > ```
->
 > ALTER TABLE your_table_name
 > DROP COLUMN your_column_name;
->
 > ```
 
 ## Part 1-2. SQL Data Types
+
+```
+COMING SOON!
+```
 
 ## Part 1-3. Columns with constraints
 
@@ -144,6 +143,15 @@ name VARCHAR(100) DEFAULT 'Jaehoon Sung',
 age INT
 )
 ```
+
+Let's revisit the `ADD` query statement.
+
+```
+ALTER TABLE your_table_name
+ADD your_new_column_name VARCHAR(100);
+```
+
+Recall that each value for a new column will be `NULL` by default, if there are already some rows on a table. What should we do if we want to fill each value for a new colum using our customized value? (Hint : we just learned it.)
 
 ## Part 2-1. Do you know **EVERYTHING** about `SELECT` for sure? :laughing:
 
@@ -561,7 +569,7 @@ Let's recall the `customers` table again.
 >
 > The statement above will return the **number** of rows.
 >
-> Someone asks me : "Does it return the same result as `SELECT COUNT(*) FROM customers`? YES, it does. The point is that `COUNT` just returns the number of rows.
+> Someone asks me : "Does it return the same result as `SELECT COUNT(*) FROM customers`?" YES, it does. The point is that `COUNT` just returns the number of rows.
 
 #### `AS` to rename a column as an alias.
 
@@ -610,10 +618,3 @@ Again, we don't have to memorize all the statements shown below. Let's just reme
 ## Part 5. Procedure / Function / Index / Transaction
 
 ## Part 6. DB Hosting / ERD (Entity Relationship Diagram) / SQL Injection
-
-````
-
-```
-
-```
-````
