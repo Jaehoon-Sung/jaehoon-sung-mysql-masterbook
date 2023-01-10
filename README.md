@@ -47,32 +47,34 @@ COMING SOON
 
 Commands shown below are called `DDL`, `Data Definition Language`.
 
+### Create & Delete a database and a table
+
 > #### Command to create a new database
 >
 > ```
 > CREATE DATABASE your_database_name
 > ```
 
-### Command to delete a database
+> #### Command to delete a database
+>
+> **BE CAREFUL!** You can NOT undo it.
+>
+> ```
+> DROP DATABASE your_database_name
+> ```
 
-**BE CAREFUL!** You can NOT undo it.
+> #### Command to create a new table
+>
+> ```
+> CREATE TABLE your_table_name (
+>    column1_name DATATYPE,
+>    column2_name DATATYPE,
+>    column3_name DATATYPE,
+>    ...
+> );
+> ```
 
-```
-DROP DATABASE your_database_name
-```
-
-### Command to create a new table
-
-```
-CREATE TABLE your_table_name (
-    column1_name DATATYPE,
-    column2_name DATATYPE,
-    column3_name DATATYPE,
-    ...
-);
-```
-
-### Example 1 : creating a new table named `person` with three columns
+#### Example 1 : creating a new table named `person` with three columns
 
 Common Mistake : Do **NOT** add `,` after the last column's data type. See there is **NO** comma after `age INT` in the code shown below.
 
@@ -86,63 +88,68 @@ CREATE TABLE person (
 )
 ```
 
+> #### Command to delete a table
+>
+> **BE CAREFUL!** You can NOT undo it.
+>
+> ```
+> DROP TABLE your_table_name
+> ```
+
+### Manage columns in a table
+
+> #### Command to create a new column in a table
+>
+> If there are already some rows on a table, each value for a new column will be `NULL` by default.  
+>  What should we do if we want to pass another default value? (Hint : we already learned this above.)
+>
+> ```
+> ALTER TABLE your_table_name
+> ADD your_new_column_name VARCHAR(100);
+> ```
+
+> #### Command to change a data type of a column
+
+> ```
+>
+> ALTER TABLE your_table_name
+> MODIFY COLUMN your_column_name DATATYPE;
+>
+> ```
+>
+> **BE CAREFUL!** Let's assume that string values already exist in a certain column named `nickname`. Then, the data type of the `nickname` column cannot be changed into a `INT` type or some number types. So it is more desirable that we should not make any major situation where we change data types in SQL. In practice, DB managers create a totally new table with desired types, and copy data appropriately from the table to be changed.
+
+> #### Command to delete a column
+>
+> ```
+>
+> ALTER TABLE your_table_name
+> DROP COLUMN your_column_name;
+>
+> ```
+
 ### Create a new table with a `DEFAULT` value
 
-You can declare each column's default value, which will be used to fill in when there is no input for that column.  
+You can declare each column's default value, which will be used to fill in when there is no input for that column.
 What would happen if there is no input value for `name` column in the `person` table below?
 
 ```
 CREATE TABLE person (
-    id INT,
-    name VARCHAR(100) DEFAULT 'Jaehoon Sung',
-    age INT
+id INT,
+name VARCHAR(100) DEFAULT 'Jaehoon Sung',
+age INT
 )
-```
-
-### Command to delete a table
-
-**BE CAREFUL!** You can NOT undo it.
-
-```
-DROP TABLE your_table_name
-```
-
-### Command to manage columns in a table
-
-#### Command to create a new column in a table
-
-If there are already some rows on a table, each value for a new column will be `NULL` by default.  
-What should we do if we want to pass another default value? (Hint : we already learned this above.)
-
-```
-ALTER TABLE your_table_name
-ADD your_new_column_name VARCHAR(100);
-```
-
-#### Command to change a data type of a column
-
-**BE CAREFUL!** Let's assume that string values already exist in a certain column named `nickname`. Then, the data type of the `nickname` column cannot be changed into a `INT` type or some number types. So it is more desirable that we should not make any major situation where we change data types in SQL. In practice, DB managers create a totally new table with desired types, and copy data appropriately from the table to be changed.
-
-```
-ALTER TABLE your_table_name
-MODIFY COLUMN your_column_name DATATYPE;
-```
-
-#### Command to delete a column
-
-```
-ALTER TABLE your_table_name
-DROP COLUMN your_column_name;
 ```
 
 ### SQL Data Types; will update soon...
 
 ## Part 2-1. Do you know **EVERYTHING** about `SELECT` for sure? :laughing:
 
-So, what is the purpose to learn SQL language? It's simple. Can you pull, add, delete, and update any data you want? If so, you are done.  
+So, what is the purpose to learn SQL language? It's simple. Can you pull, add, delete, and update any data you want? If so, you are done.
 Here, we will learn how to display the data you want to see. Below is the table called `inventory` we will use.
 
 ```
+
 | id  | product | category  | price |
 | --- | ------- | --------- | ----- |
 | 1   | shirt   | clothes   | 3     |
@@ -150,6 +157,7 @@ Here, we will learn how to display the data you want to see. Below is the table 
 | 3   | bed     | furniture | 5     |
 | 4   | chair   | furniture | 6     |
 | 5   | nike    | shoes     | 3     |
+
 ```
 
 ### Basics of `SELECT`
@@ -157,13 +165,17 @@ Here, we will learn how to display the data you want to see. Below is the table 
 #### Displaying every column of a table
 
 ```
-SELECT * FROM your_table_name
+
+SELECT \* FROM your_table_name
+
 ```
 
 #### Displaying a certain column you want to display only
 
 ```
+
 SELECT column_name_you_want_to_display FROM your_table_name
+
 ```
 
 What would be the query statement to display `product` column only? Try it for yourself!
@@ -171,7 +183,9 @@ What would be the query statement to display `product` column only? Try it for y
 #### Displaying two or more columns is possible..
 
 ```
+
 SELECT column1, column2 FROM your_table_name
+
 ```
 
 ### `SELECT` with `ORDER BY`
@@ -183,19 +197,25 @@ You will have to display the data in a certain order for many cases. `ORDER BY` 
 You can omit `ASC`, then SQL will display in ascending order by default.
 
 ```
-SELECT * FROM your_table_name ORDER BY your_column_name ASC;
+
+SELECT \* FROM your_table_name ORDER BY your_column_name ASC;
+
 ```
 
 #### Descending order
 
 ```
-SELECT * FROM your_table_name ORDER BY your_column_name DESC;
+
+SELECT \* FROM your_table_name ORDER BY your_column_name DESC;
+
 ```
 
 #### You can use `ORDER BY` more than once
 
 ```
-SELECT * FROM your_table_name ORDER BY your_column1 ASC, your_column2 DESC;
+
+SELECT \* FROM your_table_name ORDER BY your_column1 ASC, your_column2 DESC;
+
 ```
 
 This statement displays data in ascending order by your_column1, and after in descending order by your_column2 for data from the same your_column1 value.
@@ -203,6 +223,7 @@ This statement displays data in ascending order by your_column1, and after in de
 #### You can pass in the ordinal number of column for `ORDER BY`, not column name
 
 ```
+
 | id  | product | category  | price |
 | --- | ------- | --------- | ----- |
 | 1   | shirt   | clothes   | 3     |
@@ -211,10 +232,11 @@ This statement displays data in ascending order by your_column1, and after in de
 | 4   | chair   | furniture | 6     |
 | 5   | nike    | shoes     | 3     |
 
-SELECT * FROM inventory ORDER BY 3 DESC
+SELECT \* FROM inventory ORDER BY 3 DESC
+
 ```
 
-It will display the table in descending order by category.  
+It will display the table in descending order by category.
 So, the query statement above is equal to `SELECT * FROM product ORDER BY category DESC`
 
 ## Part 2-2. `WHERE` to filter your data!
@@ -222,7 +244,9 @@ So, the query statement above is equal to `SELECT * FROM product ORDER BY catego
 You can use `WHERE` to display certain data which meet conditions given after `WHERE`. So,
 
 ```
+
 SELECT your_column FROM your_table WHERE conditions_will_go_here
+
 ```
 
 The query statement above will return certain data on `your_column` which meets `conditions_will_go_here` only. Here, `conditions_will_go_here` has the form of syntax as `column_name = column_value_you_want_to_look_for`.
@@ -230,6 +254,7 @@ The query statement above will return certain data on `your_column` which meets 
 #### Example 1 : filtering products, each of whose category is in furniture only
 
 ```
+
 | id  | product | category  | price |
 | --- | ------- | --------- | ----- |
 | 1   | shirt   | clothes   | 3     |
@@ -238,12 +263,14 @@ The query statement above will return certain data on `your_column` which meets 
 | 4   | chair   | furniture | 6     |
 | 5   | nike    | shoes     | 3     |
 
-SELECT * FROM inventory WHERE category = 'furniture'
+SELECT \* FROM inventory WHERE category = 'furniture'
+
 ```
 
 #### Example 2 : filtering products, each of whose price is bigger than $4
 
 ```
+
 | id  | product | category  | price |
 | --- | ------- | --------- | ----- |
 | 1   | shirt   | clothes   | 3     |
@@ -252,7 +279,8 @@ SELECT * FROM inventory WHERE category = 'furniture'
 | 4   | chair   | furniture | 6     |
 | 5   | nike    | shoes     | 3     |
 
-SELECT * FROM inventory WHERE price > 4
+SELECT \* FROM inventory WHERE price > 4
+
 ```
 
 You can also use `>`, `<`, `>=`, `<=`, `=`, `!=`
@@ -260,7 +288,9 @@ You can also use `>`, `<`, `>=`, `<=`, `=`, `!=`
 #### `BETWEEN` is useful
 
 ```
-SELECT * FROM inventory WHERE price BETWEEN 3 AND 6
+
+SELECT \* FROM inventory WHERE price BETWEEN 3 AND 6
+
 ```
 
 `BETWEEN 3 AND 6` is the same expression as `3 ≤ price ≤ 6`. **BE CAREFUL** to remember that `=` sign is included; so, the left and right boundaries are included.
@@ -270,15 +300,19 @@ SELECT * FROM inventory WHERE price BETWEEN 3 AND 6
 #### The code below returns data which meet BOTH condition1 AND condition2.
 
 ```
-SELECT * FROM your_table
+
+SELECT \* FROM your_table
 WHERE condition1 AND condition2;
+
 ```
 
 #### The code below returns data which meet EITHER condition1 OR condition2.
 
 ```
-SELECT * FROM your_table
+
+SELECT \* FROM your_table
 WHERE condition1 OR condition2;
+
 ```
 
 #### The code below returns data which does NOT meet condition1
@@ -286,8 +320,10 @@ WHERE condition1 OR condition2;
 Just remember that `NOT` comes directly after `WHERE`
 
 ```
-SELECT * FROM your_table
+
+SELECT \* FROM your_table
 WHERE NOT condition1;
+
 ```
 
 ### Parentheses can be used for operator precedence!
@@ -297,6 +333,7 @@ WHERE NOT condition1;
 What will be the result for the query statement shown below?
 
 ```
+
 | id  | product | category  | price |
 | --- | ------- | --------- | ----- |
 | 1   | shirt   | clothes   | 3     |
@@ -305,8 +342,9 @@ What will be the result for the query statement shown below?
 | 4   | chair   | furniture | 6     |
 | 5   | nike    | shoes     | 3     |
 
-SELECT * FROM inventory
+SELECT \* FROM inventory
 WHERE (category = 'furniture' OR category = 'clothes') AND price = 5
+
 ```
 
 ## Part 2-3. `OR` VS `IN` / `LIKE` with `%` and `_`
@@ -314,6 +352,7 @@ WHERE (category = 'furniture' OR category = 'clothes') AND price = 5
 ### Multiple `OR`s in the same column? Use `IN`!
 
 ```
+
 | id  | product | category  | price |
 | --- | ------- | --------- | ----- |
 | 1   | shirt   | clothes   | 3     |
@@ -322,13 +361,16 @@ WHERE (category = 'furniture' OR category = 'clothes') AND price = 5
 | 4   | chair   | furniture | 6     |
 | 5   | nike    | shoes     | 3     |
 
-SELECT * FROM inventory WHERE category = 'furniture' OR category = 'clothes'
+SELECT \* FROM inventory WHERE category = 'furniture' OR category = 'clothes'
+
 ```
 
 The query statement above is the equal statement as
 
 ```
-SELECT * FROM inventory WHERE category IN ('furniture', 'clothes')
+
+SELECT \* FROM inventory WHERE category IN ('furniture', 'clothes')
+
 ```
 
 Imagine the case when you want to pull data in thousand kinds of category, but NOT every category. Then, you might repeat `OR` countlessly. Then, `IN` will rescue. Using `IN` will be also easier to read! We don't want to see heavily repeated `OR column_name = ... OR column_name = ... OR ...`.
@@ -336,7 +378,9 @@ Imagine the case when you want to pull data in thousand kinds of category, but N
 You can only use `IN` for values included in the **SAME** column. For example, you cannot simplify the following statement using `IN`
 
 ```
-SELECT * FROM inventory WHERE category = 'clothes' OR price = 3;
+
+SELECT \* FROM inventory WHERE category = 'clothes' OR price = 3;
+
 ```
 
 We can actually use `SELECT` **INSIDE** `IN`. This is one of the examples for SQL subquery. We will look into it, soon.
@@ -359,7 +403,7 @@ We can actually use `SELECT` **INSIDE** `IN`. This is one of the examples for SQ
 | 10  | steel chair      | furniture | 6     |
 | 11  | chair repair     | furniture | 3     |
 
-`SELECT * FROM inventory WHERE product = 'shirt'` won't give you any data. It is because there is no data whose `product` value is exactly **shirt**.  
+`SELECT * FROM inventory WHERE product = 'shirt'` won't give you any data. It is because there is no data whose `product` value is exactly **shirt**.
 How about `SELECT * FROM inventory WHERE product LIKE 'shirt'`? This also returns **NO** data. `Like 'shirt'` is actually same as `= 'shirt'`. To make use of `LIKE`, you must use wild-card characters such as `%` and `_`!
 
 #### `LIKE` with `%`
@@ -565,6 +609,9 @@ Again, we don't have to memorize all the statements shown below. Let's just reme
 
 ## Part 6. DB Hosting / ERD (Entity Relationship Diagram) / SQL Injection
 
+````
+
 ```
 
 ```
+````
