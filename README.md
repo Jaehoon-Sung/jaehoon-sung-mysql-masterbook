@@ -345,7 +345,7 @@ Imagine the case when you want to pull data related to thousands values of a sin
 
 Using `IN` will be also easier to read, as we might not want to see heavily repeated `OR column_name = ... OR column_name = ... OR ...`.
 
-You can only use `IN` for values included in the **SAME** column. For example, you cannot simplify the following statement using `IN`
+You can only use `IN` for values included in the **SAME** column. For example, you cannot simplify the following statement using `IN`.
 
 ```
 SELECT \* FROM inventory WHERE category = 'clothes' OR price = 3;
@@ -353,9 +353,9 @@ SELECT \* FROM inventory WHERE category = 'clothes' OR price = 3;
 
 Spoiler Alert! We can actually use `SELECT` **INSIDE** `IN`. This is one of the examples for SQL subquery. We will look into it on Part 2-5.
 
-### `LIKE` with `%` and `_`
+### `LIKE` is useful "ONLY" with `%` and `_`
 
-`LIKE` helps you find values **containing** values after `LIKE`. Let's learn with the `inventory` table shown below.
+`LIKE` helps you find values **including** certain values you want to filter. Let's learn with the `inventory` table shown below.
 
 | id  | product          | category  | price |
 | --- | ---------------- | --------- | ----- |
@@ -374,29 +374,35 @@ Spoiler Alert! We can actually use `SELECT` **INSIDE** `IN`. This is one of the 
 `SELECT * FROM inventory WHERE product = 'shirt'` won't give you any data. It is because there is no data whose `product` value is exactly **shirt**.
 How about `SELECT * FROM inventory WHERE product LIKE 'shirt'`? This also returns **NO** data. `Like 'shirt'` is actually same as `= 'shirt'`. To make use of `LIKE`, you must use wild-card characters such as `%` and `_`!
 
-> #### `LIKE` with `%`
->
-> `%` means any string regardless the number of its characters. Let's dive into the examples.
->
-> > ```
-> > SELECT * FROM inventory WHERE product LIKE 'shirt%'
-> > ```
-> >
-> > This statement allows us to display any values that starts with "shirt". Actually, there is nothing that starts with "shirt" in the example table.
->
-> > ```
-> > SELECT * FROM inventory WHERE product LIKE '%shirt'
-> > ```
-> >
-> > This statement allows us to display any values that ends with "shirt". You can find what would be displayed! See the product name which ends with "shirt".
->
-> > ```
-> > SELECT * FROM inventory WHERE product LIKE '%shirt%'
-> > ```
-> >
-> > This statement allows us to display any values that contains "shirt", because `%` is appended before and after "shirt". Guess what will be displayed!
+### `LIKE` with `%`
 
-#### `LIKE` with `_`
+`%` means any string regardless the number of its characters. Let's dive into the examples.
+
+> #### LIKE 'VALUE%'
+>
+> ```
+> SELECT * FROM inventory WHERE product LIKE 'shirt%'
+> ```
+>
+> This statement allows us to display any values that starts with "shirt". Actually, there is nothing that starts with "shirt" in the example table.
+
+> #### LIKE '%VALUE'
+>
+> ```
+> SELECT * FROM inventory WHERE product LIKE '%shirt'
+> ```
+>
+> This statement allows us to display any values that ends with "shirt". You can find what would be displayed! See the product name which ends with "shirt".
+
+> #### LIKE '%VALUE%'
+>
+> ```
+> SELECT * FROM inventory WHERE product LIKE '%shirt%'
+> ```
+>
+> This statement allows us to display any values that contains "shirt", because `%` is appended before and after "shirt". Guess what will be displayed!
+
+### `LIKE` with `_`
 
 `_` plays a similar role as `%` did, but it **cares** about the number of characters. Let's dive into the examples.
 
