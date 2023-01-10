@@ -232,10 +232,10 @@ You will have to display the data in a certain order for many cases. `ORDER BY` 
 > ```
 >
 > ```
-> SELECT \* FROM inventory ORDER BY 3 DESC
+> SELECT * FROM inventory ORDER BY 3 DESC
 > ```
 >
-> It will display the table in descending order by category.
+> It will display the table in descending order by category.  
 > So, the query statement above is equal to `SELECT * FROM product ORDER BY category DESC`
 
 ## Part 2-2. `WHERE` to filter your data!
