@@ -328,8 +328,6 @@ You can also use `>`, `<`, `>=`, `<=`, `=`, `!=`
 
 ### Multiple `OR`s in the same column? Use `IN`!
 
-```
-
 | id  | product | category  | price |
 | --- | ------- | --------- | ----- |
 | 1   | shirt   | clothes   | 3     |
@@ -338,29 +336,22 @@ You can also use `>`, `<`, `>=`, `<=`, `=`, `!=`
 | 4   | chair   | furniture | 6     |
 | 5   | nike    | shoes     | 3     |
 
-SELECT \* FROM inventory WHERE category = 'furniture' OR category = 'clothes'
+`SELECT * FROM inventory WHERE category = 'furniture' OR category = 'clothes'` will return data on row 1 through 4.
 
-```
+This query statement is simply and equivalently expressed as  
+`SELECT * FROM inventory WHERE category IN ('furniture', 'clothes')`
 
-The query statement above is the equal statement as
+Imagine the case when you want to pull data related to thousands values of a single column, but NOT the whole values of that column. Then, you might repeat `OR` countlessly. For this case, `IN` will rescue.
 
-```
-
-SELECT \* FROM inventory WHERE category IN ('furniture', 'clothes')
-
-```
-
-Imagine the case when you want to pull data in thousand kinds of category, but NOT every category. Then, you might repeat `OR` countlessly. Then, `IN` will rescue. Using `IN` will be also easier to read! We don't want to see heavily repeated `OR column_name = ... OR column_name = ... OR ...`.
+Using `IN` will be also easier to read, as we might not want to see heavily repeated `OR column_name = ... OR column_name = ... OR ...`.
 
 You can only use `IN` for values included in the **SAME** column. For example, you cannot simplify the following statement using `IN`
 
 ```
-
 SELECT \* FROM inventory WHERE category = 'clothes' OR price = 3;
-
 ```
 
-We can actually use `SELECT` **INSIDE** `IN`. This is one of the examples for SQL subquery. We will look into it, soon.
+Spoiler Alert! We can actually use `SELECT` **INSIDE** `IN`. This is one of the examples for SQL subquery. We will look into it on Part 2-5.
 
 ### `LIKE` with `%` and `_`
 
@@ -383,27 +374,27 @@ We can actually use `SELECT` **INSIDE** `IN`. This is one of the examples for SQ
 `SELECT * FROM inventory WHERE product = 'shirt'` won't give you any data. It is because there is no data whose `product` value is exactly **shirt**.
 How about `SELECT * FROM inventory WHERE product LIKE 'shirt'`? This also returns **NO** data. `Like 'shirt'` is actually same as `= 'shirt'`. To make use of `LIKE`, you must use wild-card characters such as `%` and `_`!
 
-#### `LIKE` with `%`
-
-`%` means any string regardless the number of its characters. Let's dive into the examples.
-
-> ```
-> SELECT * FROM inventory WHERE product LIKE 'shirt%'
-> ```
+> #### `LIKE` with `%`
 >
-> This statement allows us to display any values that starts with "shirt". Actually, there is nothing that starts with "shirt" in the example table.
-
-> ```
-> SELECT * FROM inventory WHERE product LIKE '%shirt'
-> ```
+> `%` means any string regardless the number of its characters. Let's dive into the examples.
 >
-> This statement allows us to display any values that ends with "shirt". You can find what would be displayed! See the product name which ends with "shirt".
-
-> ```
-> SELECT * FROM inventory WHERE product LIKE '%shirt%'
-> ```
+> > ```
+> > SELECT * FROM inventory WHERE product LIKE 'shirt%'
+> > ```
+> >
+> > This statement allows us to display any values that starts with "shirt". Actually, there is nothing that starts with "shirt" in the example table.
 >
-> This statement allows us to display any values that contains "shirt", because `%` is appended before and after "shirt". Guess what will be displayed!
+> > ```
+> > SELECT * FROM inventory WHERE product LIKE '%shirt'
+> > ```
+> >
+> > This statement allows us to display any values that ends with "shirt". You can find what would be displayed! See the product name which ends with "shirt".
+>
+> > ```
+> > SELECT * FROM inventory WHERE product LIKE '%shirt%'
+> > ```
+> >
+> > This statement allows us to display any values that contains "shirt", because `%` is appended before and after "shirt". Guess what will be displayed!
 
 #### `LIKE` with `_`
 
