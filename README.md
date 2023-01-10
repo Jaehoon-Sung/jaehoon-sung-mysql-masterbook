@@ -236,7 +236,7 @@ You will have to display the data in a certain order for many cases. `ORDER BY` 
 > ```
 >
 > It will display the table in descending order by category.  
-> So, the query statement above is equal to `SELECT * FROM product ORDER BY category DESC`
+> So, the query statement above is equal to `SELECT * FROM product ORDER BY category DESC`.
 
 ## Part 2-2. `WHERE` to filter your data!
 
@@ -251,7 +251,6 @@ The query statement above will return certain data on `your_column` which meets 
 > #### Example 1 : filtering products, each of whose category is in furniture only
 >
 > ```
->
 > | id  | product | category  | price |
 > | --- | ------- | --------- | ----- |
 > | 1   | shirt   | clothes   | 3     |
@@ -261,88 +260,72 @@ The query statement above will return certain data on `your_column` which meets 
 > | 5   | nike    | shoes     | 3     |
 >
 > SELECT * FROM inventory WHERE category = 'furniture'
->
 > ```
 
-#### Example 2 : filtering products, each of whose price is bigger than $4
-
-```
-
-| id  | product | category  | price |
-| --- | ------- | --------- | ----- |
-| 1   | shirt   | clothes   | 3     |
-| 2   | pants   | clothes   | 4     |
-| 3   | bed     | furniture | 5     |
-| 4   | chair   | furniture | 6     |
-| 5   | nike    | shoes     | 3     |
-
-SELECT \* FROM inventory WHERE price > 4
-
-```
+> #### Example 2 : filtering products, each of whose price is bigger than $4
+>
+> | id  | product | category  | price |
+> | --- | ------- | --------- | ----- |
+> | 1   | shirt   | clothes   | 3     |
+> | 2   | pants   | clothes   | 4     |
+> | 3   | bed     | furniture | 5     |
+> | 4   | chair   | furniture | 6     |
+> | 5   | nike    | shoes     | 3     |
+>
+> `SELECT * FROM inventory WHERE price > 4`
 
 You can also use `>`, `<`, `>=`, `<=`, `=`, `!=`
 
-### `BETWEEN` is useful
-
-```
-
-SELECT \* FROM inventory WHERE price BETWEEN 3 AND 6
-
-```
-
-`BETWEEN 3 AND 6` is the same expression as `3 ≤ price ≤ 6`. **BE CAREFUL** to remember that `=` sign is included; so, the left and right boundaries are included.
+> #### `BETWEEN` is useful
+>
+> ```
+> SELECT \* FROM inventory WHERE price BETWEEN 3 AND 6
+> ```
+>
+> `BETWEEN 3 AND 6` is the same expression as `3 ≤ price ≤ 6`. **BE CAREFUL** to remember that `=` sign is included; so, the left and right boundaries are included.
 
 ### `AND`, `OR`, and `NOT` for sophiscated conditions
 
-#### The code below returns data which meet BOTH condition1 AND condition2.
+> #### The code below returns data which meet BOTH condition1 AND condition2.
+>
+> ```
+> SELECT * FROM your_table
+> WHERE condition1 AND condition2;
+> ```
 
-```
+> #### The code below returns data which meet EITHER condition1 OR condition2.
+>
+> ```
+> SELECT * FROM your_table
+> WHERE condition1 OR condition2;
+> ```
 
-SELECT \* FROM your_table
-WHERE condition1 AND condition2;
-
-```
-
-#### The code below returns data which meet EITHER condition1 OR condition2.
-
-```
-
-SELECT \* FROM your_table
-WHERE condition1 OR condition2;
-
-```
-
-#### The code below returns data which does NOT meet condition1
-
-Just remember that `NOT` comes directly after `WHERE`
-
-```
-
-SELECT \* FROM your_table
-WHERE NOT condition1;
-
-```
+> #### The code below returns data which does NOT meet condition1
+>
+> Just remember that `NOT` comes directly after `WHERE`
+>
+> ```
+> SELECT * FROM your_table
+> WHERE NOT condition1;
+> ```
 
 ### Parentheses can be used for operator precedence!
 
-#### You can use parentheses for operation precedence
-
-What will be the result for the query statement shown below?
-
-```
-
-| id  | product | category  | price |
-| --- | ------- | --------- | ----- |
-| 1   | shirt   | clothes   | 3     |
-| 2   | pants   | clothes   | 5     |
-| 3   | bed     | furniture | 5     |
-| 4   | chair   | furniture | 6     |
-| 5   | nike    | shoes     | 3     |
-
-SELECT \* FROM inventory
-WHERE (category = 'furniture' OR category = 'clothes') AND price = 5
-
-```
+> #### You can use parentheses for operation precedence
+>
+> What will be the result for the query statement shown below?
+>
+> ```
+> | id  | product | category  | price |
+> | --- | ------- | --------- | ----- |
+> | 1   | shirt   | clothes   | 3     |
+> | 2   | pants   | clothes   | 5     |
+> | 3   | bed     | furniture | 5     |
+> | 4   | chair   | furniture | 6     |
+> | 5   | nike    | shoes     | 3     |
+>
+> SELECT * FROM inventory WHERE (category = 'furniture' OR category = 'clothes') AND price = 5
+> ```
 
 ## Part 2-3. `OR` VS `IN` / `LIKE` with `%` and `_`
 
@@ -605,7 +588,3 @@ Again, we don't have to memorize all the statements shown below. Let's just reme
 ## Part 5. Procedure / Function / Index / Transaction
 
 ## Part 6. DB Hosting / ERD (Entity Relationship Diagram) / SQL Injection
-
-```
-
-```
