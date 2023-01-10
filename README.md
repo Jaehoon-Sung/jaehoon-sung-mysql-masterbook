@@ -2,8 +2,7 @@
 
 **Welcome message from the author**
 
-Hi, thank you for visiting this repository. I created this repository to review important `mySQL` syntax and update some major TIL notes.  
-Any feedback or comments are sincerely appreciated.
+Hi, thank you for visiting this repository. I created this repository to review important `mySQL` syntax and update some major TIL notes. Any feedback or comments are sincerely appreciated.
 
 \- Jaehoon Sung (Jae)
 
@@ -40,15 +39,19 @@ Famous graph database : `Neo4j`, `Sparsity`, `OrientDB`, `ArangoDB` and etc..
 
 ### There are three more types of databases I think important; will update soon...
 
+```
+COMING SOON
+```
+
 ## Part 1. Basic Syntax for mySQL (DDL)
 
 Commands shown below are called `DDL`, `Data Definition Language`.
 
-### Command to create a new database
-
-```
-CREATE DATABASE your_database_name
-```
+> #### Command to create a new database
+>
+> ```
+> CREATE DATABASE your_database_name
+> ```
 
 ### Command to delete a database
 
@@ -262,7 +265,7 @@ SELECT * FROM inventory WHERE price BETWEEN 3 AND 6
 
 `BETWEEN 3 AND 6` is the same expression as `3 ≤ price ≤ 6`. **BE CAREFUL** to remember that `=` sign is included; so, the left and right boundaries are included.
 
-### `AND`, `OR`, and `NOT` for sophiscated conditions / Parentheses can be used for operator precedence!
+### `AND`, `OR`, and `NOT` for sophiscated conditions
 
 #### The code below returns data which meet BOTH condition1 AND condition2.
 
@@ -286,6 +289,8 @@ Just remember that `NOT` comes directly after `WHERE`
 SELECT * FROM your_table
 WHERE NOT condition1;
 ```
+
+### Parentheses can be used for operator precedence!
 
 #### You can use parentheses for operation precedence
 
@@ -395,7 +400,8 @@ How about `SELECT * FROM inventory WHERE product LIKE 'shirt'`? This also return
 > SELECT * FROM inventory WHERE product LIKE 'shirt__'
 > ```
 
-> You can mix `%` and `_`! The statement below will return data whose `product` value has a single character followed by "shirt" and ends with any string (or > just ends with no trailing character.)
+> You can mix `%` and `_`! The statement below will return data whose `product` value has a single character followed by "shirt" and ends with any string (or
+> just ends with no trailing character.)
 >
 > ```
 > SELECT * FROM inventory WHERE product LIKE '_shirt%'
@@ -412,7 +418,7 @@ I dare say that you might come across the errors shown below, when you use `LIKE
 | 3   | tshirt  | clothes   | 5     |
 | 4   | chair   | furniture | 4     |
 
-Let's assume that a data type for `product` column is `CHAR(10)`. Then, what will be the result for `LIKE '%chair'`? Using what we have learned so far, I think that most of you would say 'chair', because '%chair' means any string (including no character) followed by `chair`. But actually, it will return **NOTHING**. What happened?
+Let's assume that a data type for `product` column is `CHAR(10)`. Then, what will be the result for `LIKE '%chair'`? Using what we have learned so far, I think that most of you would say 'chair', because '%chair' means any string (including no character) followed by `chair`. But actually, it will return **NOTHING**. What happens here?
 
 By declaring a type of `product` column as `CHAR(10)`, if you pass a string `chair` into that column, the table will add trailing spaces to make each string's length 10 **exactly**. So, `'chair'` is actually saved as `'chair_____'`. So, this `'chair_____'` does not suffice `LIKE '%chair'`, because there are trailing space characters following 'chair'.
 
@@ -424,7 +430,7 @@ Using `%` too many times to query the DB is actually not the best. This problem 
 
 ## Part 2-4. Statistics / Some NUMBER statements / Some STRING statements
 
-Welcome to JAE Credit Card. Below is the `customers` table showing the list of users for JAE Platinum Card.
+Below is the `customers` table showing the list of users for JAE Platinum Card.
 
 | id  | name     | num-of-checkouts | total-amount-spent | membership-rank | num-of-late-payments |
 | --- | -------- | ---------------- | ------------------ | --------------- | -------------------- |
@@ -437,10 +443,12 @@ Welcome to JAE Credit Card. Below is the `customers` table showing the list of u
 | 7   | Harry    | 87               | 16500              | vip             | 2                    |
 | 8   | Alex     | 17               | 2500               | royal           | 3                    |
 
-### Statistics with `MIN`, `MAX`, `AVG`, and `SUM`
+### Statistics with `MAX`, `MIN`, `AVG`, and `SUM`
 
 > This is for a quick review.
 > `SELECT total-amount-spent FROM customers` will return the whole data on `total-amount-spent` column.
+
+#### `MAX(column_name)`
 
 > ```
 > SELECT MAX(total-amount-spent) FROM customers
@@ -449,10 +457,12 @@ Welcome to JAE Credit Card. Below is the `customers` table showing the list of u
 > The statement above will return the maximum value of `total-amount-spent` values. **REMEMBER** that this does not return a whole row which contains the corresponding maximum value. It just returns the maximum value of `total-amount-spent` shown as below.
 >
 > ```
-> | total-amount-spent |
-> | ------------------ |
-> |       150000       |
+> |  MAX(total-amount-spent) |
+> |    ------------------    |
+> |          150000          |
 > ```
+
+#### `MIN(column_name)`
 
 > ```
 > SELECT MIN(total-amount-spent) FROM customers
@@ -461,10 +471,12 @@ Welcome to JAE Credit Card. Below is the `customers` table showing the list of u
 > Similarly, the statement above will return the minimum value of `total-amount-spent` values shown as below.
 >
 > ```
-> | total-amount-spent |
-> | ------------------ |
-> |        100         |
+> | MIN(total-amount-spent) |
+> |   -------------------   |
+> |           100           |
 > ```
+
+#### `AVG(column_name)`
 
 > ```
 > SELECT AVG(num-of-late-payments) FROM customers
@@ -472,15 +484,76 @@ Welcome to JAE Credit Card. Below is the `customers` table showing the list of u
 >
 > The statement above will return the average value of `num-of-late-payments`.
 
+#### `SUM(column_name)`
+
 > ```
 > SELECT SUM(num-of-late-payments) FROM customers
 > ```
 >
 > The statement above will return the sum of `num-of-late-payments`.
 
+### `COUNT()`, `AS`, `DISTINCT`, and `LIMIT`
+
+Let's recall the `customers` table again.
+
+| id  | name     | num-of-checkouts | total-amount-spent | membership-rank | num-of-late-payments |
+| --- | -------- | ---------------- | ------------------ | --------------- | -------------------- |
+| 1   | Jay      | 3                | 250                | family          | 0                    |
+| 2   | Robert   | 45               | 150000             | vip             | 0                    |
+| 3   | Mitchell | 52               | 3200               | royal           | 8                    |
+| 4   | Jane     | 121              | 25000              | vip             | 5                    |
+| 5   | Mickey   | 21               | 1250               | family          | 1                    |
+| 6   | Grace    | 63               | 100                | family          | 1                    |
+| 7   | Harry    | 87               | 16500              | vip             | 2                    |
+| 8   | Alex     | 17               | 2500               | royal           | 3                    |
+
+#### `COUNT()` to count the number of rows
+
+> ```
+> SELECT COUNT(total-amount-spent) FROM customers
+> ```
+>
+> The statement above will return the **number** of rows.
+>
+> Someone asks me : "Does it return the same result as `SELECT COUNT(*) FROM customers`? YES, it does. The point is that `COUNT` just returns the number of rows.
+
+#### `AS` to rename a column as an alias.
+
+> Let's focus on the column name of the data which is returned by `MAX`, `MIN`, etc...
+>
+> ```
+> SELECT MAX(total-amount-spent) FROM customers
+> ```
+>
+> ```
+> |  MAX(total-amount-spent) |
+> |    ------------------    |
+> |          150000          |
+> ```
+>
+> What if we want to use a customized name for `MAX(total-amount-spent)? Then, we should use an `AS` keyword!
+>
+> ```
+> SELECT MAX(total-amount-spent) AS maximum-spent FROM customers
+> ```
+>
+> See tbat the column name changes!
+>
+> ```
+> |       maximum-spent      |
+> |    ------------------    |
+> |          150000          |
+> ```
+
 ### Some useful NUMBER statements
 
+We don't have to memorize all the statements shown below. It is just important to know that these functions "exist". If you forget them, just google "SQL number functions"
+
+#### Simple calculations are available!
+
 ### Some useful STRING statements
+
+Again, we don't have to memorize all the statements shown below. Let's just remember that they "exist". We can search by googling "SQL string functions"
 
 ## Part 2-5. `GROUP BY` / `SELECT` in `SELECT` : sub-query!
 
@@ -491,3 +564,7 @@ Welcome to JAE Credit Card. Below is the `customers` table showing the list of u
 ## Part 5. Procedure / Function / Index / Transaction
 
 ## Part 6. DB Hosting / ERD (Entity Relationship Diagram) / SQL Injection
+
+```
+
+```
