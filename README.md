@@ -129,7 +129,9 @@ Commands shown below are called `DDL`, `Data Definition Language`.
 COMING SOON!
 ```
 
-## Part 1-3. Columns with constraints
+## Part 1-3. Columns with constraints : safe update & easy debug!
+
+We can actually set up constraints to make appropriate values come in our database. To achieve this goal, we can use many keywords introduced below. These keywords will help us set up some customized errors and find bugs more easily. Let's make a full use of them wisely!
 
 ### Create a new table with a `DEFAULT` value
 
@@ -152,6 +154,44 @@ ADD your_new_column_name DATATYPE;
 ```
 
 Recall that each value for a new column will be `NULL` by default, if there are already some rows on a table. What should we do to fill each value for a new column using our customized value? (Hint : we just learned it.)
+
+### `NOT NULL` : Don't make the value VOID!
+
+We are already familiar with the definition of `NULL`. The DB does not always let you know whether you fail to enter the whole set of necessary data in your table or not. Sometimes, you can also make some human errors such as entering fewer number of values when adding a new row, and the DB does not still always let you know these errors. Your missing values will be "kindly" filled with `NULL`s, which might occur other errors for your software. `NOT NULL` will help you notice these errors earlier!
+
+```
+CREATE TABLE new_table (
+    id INT NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    age INT
+)
+```
+
+You can see that `id` and `name` marked as `NOT NULL`. Then, if you pass nothing into these columns, the DB will refuse any requested updates and alert you that you don't give any data. It will help you notice `NULL` errors much earlier and prevent you from getting lost when you work on other frontend or backend codes! `NULL` problems are very hard to catch in practice, because you cannot notice them until you literally print them out! Do you agree why constraint keywords are important in SQL now?
+
+### `UNIQUE` : let the value UNIQUE on the column!
+
+```
+CREATE TABLE new_table (
+    id INT UNIQUE,
+    name VARCHAR(100) NOT NULL,
+    age INT
+)
+```
+
+Now, `id` has an `UNIQUE` constraint. As it is an integer type, each value on `id` column will have an **unique** value! So, the table declared above will **NOT** permit the table shown below!
+
+```
+| student id | name  | age |
+| ---------- | ----- | --- |
+| 1          | Jae   | 18  |
+| 2          | Grace | 20  |
+| 2          | Brian | 17  |
+
+ERROR! Brian's `id` is duplicated with Grace's `id`!
+```
+
+###
 
 ## Part 2-1. Do you know **EVERYTHING** about `SELECT` for sure? :laughing:
 
