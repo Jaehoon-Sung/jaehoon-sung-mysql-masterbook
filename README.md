@@ -158,8 +158,6 @@ Recall that each value for a new column will be `NULL` by default, if there are 
 So, what is the purpose to learn SQL language? It's simple. Can you pull, add, delete, and update any data you want? If so, you are done.
 Here, we will learn how to display the data you want to see. Below is the table called `inventory` we will use.
 
-```
-
 | id  | product | category  | price |
 | --- | ------- | --------- | ----- |
 | 1   | shirt   | clothes   | 3     |
@@ -167,8 +165,6 @@ Here, we will learn how to display the data you want to see. Below is the table 
 | 3   | bed     | furniture | 5     |
 | 4   | chair   | furniture | 6     |
 | 5   | nike    | shoes     | 3     |
-
-```
 
 ### Basics of `SELECT`
 
@@ -229,13 +225,12 @@ You will have to display the data in a certain order for many cases. `ORDER BY` 
 > | 3   | bed     | furniture | 5     |
 > | 4   | chair   | furniture | 6     |
 > | 5   | nike    | shoes     | 3     |
-> ```
 >
-> ```
 > SELECT * FROM inventory ORDER BY 3 DESC
+>
 > ```
 >
-> It will display the table in descending order by category.  
+> It will display the table in descending order by category.
 > So, the query statement above is equal to `SELECT * FROM product ORDER BY category DESC`.
 
 ## Part 2-2. `WHERE` to filter your data!
@@ -243,7 +238,7 @@ You will have to display the data in a certain order for many cases. `ORDER BY` 
 You can use `WHERE` to display certain data which meet conditions given after `WHERE`. So,
 
 ```
-SELECT your_column FROM your_table WHERE conditions_will_go_here
+SELECT <your_column FROM your_table> WHERE <conditions_will_go_here>
 ```
 
 The query statement above will return certain data on `your_column` which meets `conditions_will_go_here` only. Here, `conditions_will_go_here` has the form of syntax as `column_name = column_value_you_want_to_look_for`.
@@ -264,6 +259,7 @@ The query statement above will return certain data on `your_column` which meets 
 
 > #### Example 2 : filtering products, each of whose price is bigger than $4
 >
+> ```
 > | id  | product | category  | price |
 > | --- | ------- | --------- | ----- |
 > | 1   | shirt   | clothes   | 3     |
@@ -272,14 +268,15 @@ The query statement above will return certain data on `your_column` which meets 
 > | 4   | chair   | furniture | 6     |
 > | 5   | nike    | shoes     | 3     |
 >
-> `SELECT * FROM inventory WHERE price > 4`
+> SELECT * FROM inventory WHERE price > 4
+> ```
 
 You can also use `>`, `<`, `>=`, `<=`, `=`, `!=`
 
 > #### `BETWEEN` is useful
 >
 > ```
-> SELECT \* FROM inventory WHERE price BETWEEN 3 AND 6
+> SELECT * FROM inventory WHERE price BETWEEN 3 AND 6
 > ```
 >
 > `BETWEEN 3 AND 6` is the same expression as `3 ≤ price ≤ 6`. **BE CAREFUL** to remember that `=` sign is included; so, the left and right boundaries are included.
