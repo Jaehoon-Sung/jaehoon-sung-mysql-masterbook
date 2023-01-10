@@ -406,24 +406,40 @@ How about `SELECT * FROM inventory WHERE product LIKE 'shirt'`? This also return
 
 `_` plays a similar role as `%` did, but it **cares** about the number of characters. Let's dive into the examples.
 
+> #### LIKE '\_VALUE'
+>
 > ```
 > SELECT * FROM inventory WHERE product LIKE '_shirt'
 > ```
 >
 > Let's count the number of `_`. There is only **one** \_ , isn't it? So, this statement will return data whose `product` value has a single charactor followed by "shirt". So, it will return a row for product `tshirt`. (**NOT** `tshirt misc`, do you see why? If you want to get a row for `tshirt misc`, what should the query statement look like?)
 
+> #### LIKE 'VALUE\_'
+>
 > Similarly, the statement below will return data whose `product` value has "shirt" followed by two characters exactly
 >
 > ```
 > SELECT * FROM inventory WHERE product LIKE 'shirt__'
 > ```
 
+### `%` and `_` come together
+
+> #### `%` and `_` can be used together!
+>
 > You can mix `%` and `_`! The statement below will return data whose `product` value has a single character followed by "shirt" and ends with any string (or
 > just ends with no trailing character.)
 >
 > ```
 > SELECT * FROM inventory WHERE product LIKE '_shirt%'
 > ```
+
+> #### `%` and `_` can be in-between characters of string!
+>
+> ```
+> SELECT * FROM inventory WHERE product LIKE 'nike%young'
+> ```
+>
+> The statement above is valid. It will return data whose`product` value starts with `nike` and ends with `young`! Remember that `%` and `_` do not have to be at the beginning or end!
 
 ### PRO-TIP 1 : **BE CAREFUL** to use `LIKE` for a `CHAR()` data type
 
@@ -438,13 +454,13 @@ I dare say that you might come across the errors shown below, when you use `LIKE
 
 Let's assume that a data type for `product` column is `CHAR(10)`. Then, what will be the result for `LIKE '%chair'`? Using what we have learned so far, I think that most of you would say 'chair', because '%chair' means any string (including no character) followed by `chair`. But actually, it will return **NOTHING**. What happens here?
 
-By declaring a type of `product` column as `CHAR(10)`, if you pass a string `chair` into that column, the table will add trailing spaces to make each string's length 10 **exactly**. So, `'chair'` is actually saved as `'chair_____'`. So, this `'chair_____'` does not suffice `LIKE '%chair'`, because there are trailing space characters following 'chair'.
+By declaring a type of `product` column as `CHAR(10)`, if you pass a string `chair` into that column, the table will add trailing spaces to make each string's length 10 **exactly**. So, `'chair'` is actually saved as `'chair_____'`, and this string does not suffice `LIKE '%chair'`, because `%chair` looks for a string which ends with `chair` clearly.
 
-If `LIKE` with `%` and `_` does not work as you intend, it will be always useful to check if you play with a `CHAR` data type! :D
+If `LIKE` with `%` and `_` does not work as you intend, it will be always useful to check if you play with a `CHAR` data type! :smile:
 
-### PRO-TOP 2 : Using `%` too many times is actually inefficient.
+### PRO-TIP 2 : Using `%` too many times is actually inefficient.
 
-Using `%` too many times to query the DB is actually not the best. This problem is related to `index` problem, which we will look into later. If you can output the same results with some operators not too complicatedly, I would recommend to go for them, not using `%` too much. Well, `%` is the easiest to use, because this is wild-card! :)
+Using `%` too many times to query the DB is actually not the best. This problem is related to `index` problem, which we will look into later. If you can output the same results with some operators not too complicatedly, I would recommend to go for them without using `%` too much. Well, `%` is the easiest to use, because this is a wild-card! :sweat_smile:
 
 ## Part 2-4. Statistics / Some NUMBER statements / Some STRING statements
 
