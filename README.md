@@ -567,7 +567,7 @@ Let's recall the `customers` table again.
 > |          150000          |
 > ```
 >
-> What if we want to use a customized name for `MAX(total-amount-spent)? Then, we should use an `AS` keyword!
+> What if we want to use a customized name for `MAX(total-amount-spent)`? Then, we should use an `AS` keyword!
 >
 > ```
 > SELECT MAX(total-amount-spent) AS maximum-spent FROM customers
