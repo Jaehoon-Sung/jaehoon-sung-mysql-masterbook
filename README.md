@@ -191,7 +191,56 @@ Now, `id` has an `UNIQUE` constraint. As it is an integer type, each value on `i
 ERROR! Brian's `id` is duplicated with Grace's `id`!
 ```
 
-###
+Actually, `UNIQUE` is not frequently used, because there is a similar but **more important** keyword `PRIMARY KEY`, which we will meet soon!
+
+### `CHECK()` : for some detailed conditions
+
+`CHECK()` allows us to write some customized conditions.
+
+```
+CREATE TABLE new_table (
+    id INT,
+    name VARCHAR(100),
+    age INT CHECK (age > 0),
+)
+```
+
+`CHECK (age > 0)` makes the DB only get the whole number for `age`. You can use operators such as `AND`, `OR`, `IN`, and `>` with `CHECK()`!
+
+### `PRIMARY KEY` : a value which distinguishes each row data
+
+Assume that you are a college student. Then, what value can be used as an unique key to distingush your information from others? Your name, age, or major cannot be used, because there can be students who have the same name, age, or major. Maybe, your student ID can be. If a college gives each student an unique student ID, it can distinguish each student regardless of other values. Here, the column for student ID is called `PRIMARY KEY`, which helps you distinguish each row data.
+
+TLDR : pick the column which can be used a `PRIMARY KEY` to distinguish each row data from the table shown below!
+
+| student id | name   | age | major            |
+| ---------- | ------ | --- | ---------------- |
+| 1          | Jay    | 19  | Computer Science |
+| 2          | Grace  | 19  | Economics        |
+| 3          | Robert | 21  | History          |
+| 4          | Jane   | 22  | Computer Science |
+
+Using the only saved data on the table, we can use `student id` and `name` as `PRIMARY KEY`. However, in practice, we must use `student id` only, because any student whose name is Jay, Grace, Robert, or Jane can enroll in this college! Of course, a software engineer at this college must secure that `student id` will be **unique** forever.
+
+Then, how can we give a `PRIMARY KEY` constraint? See the code below.
+
+```
+CREATE TABLE new_table (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    age INT CHECK (age > 0),
+)
+```
+
+Now, `id` has a `PRIMARY KEY` constraint! Giving a `PRIMARY KEY` constraint actually means making the column `NOT NULL` **AND** `UNIQUE`. It makes sense because the value to distinguish each row data must be unique but not void!
+
+**SPOILER ALERT!** We can use two or more columns to designate a `PRIMARY KEY` for the table. It is called a `COMPOSITE PRIMARY KEY`. We will learn it with `NF (Normal Form)`.
+
+### `AUTO INCREMENT` : giving +1 value automatically. the best friend of `PRIMARY KEY`!
+
+### `CONSTRAINT()` : easier to read & faster to find errors!
+
+### PRO-TIP 1 : How to add constraints to an exiting column?
 
 ## Part 2-1. Do you know **EVERYTHING** about `SELECT` for sure? :laughing:
 
@@ -623,13 +672,13 @@ Let's recall the `customers` table again.
 
 ### Some useful NUMBER statements
 
-We don't have to memorize all the statements shown below. It is just important to know that these functions "exist". If you forget them, just google "SQL number functions"
+We don't have to memorize all the statements shown below. It is just important to know that these functions **exist**. If you forget them, just google "SQL number functions"
 
 #### Simple calculations are available!
 
 ### Some useful STRING statements
 
-Again, we don't have to memorize all the statements shown below. Let's just remember that they "exist". We can search by googling "SQL string functions"
+Again, we don't have to memorize all the statements shown below. Let's just remember that they **exist**. We can search by googling "SQL string functions"
 
 ## Part 2-5. `GROUP BY` / `SELECT` in `SELECT` : sub-query!
 
