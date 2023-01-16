@@ -140,9 +140,9 @@ What would happen if there is no input value for `name` column in the `person` t
 
 ```
 CREATE TABLE person (
-id INT,
-name VARCHAR(100) DEFAULT 'Jaehoon Sung',
-age INT
+    id INT,
+    name VARCHAR(100) DEFAULT 'Jaehoon Sung',
+    age INT
 )
 ```
 
@@ -201,7 +201,7 @@ Actually, `UNIQUE` is not frequently used, because there is a similar but **more
 CREATE TABLE new_table (
     id INT,
     name VARCHAR(100),
-    age INT CHECK (age > 0),
+    age INT CHECK (age > 0)
 )
 ```
 
@@ -228,7 +228,7 @@ Then, how can we give a `PRIMARY KEY` constraint? See the code below.
 CREATE TABLE new_table (
     id INT PRIMARY KEY,
     name VARCHAR(100),
-    age INT CHECK (age > 0),
+    age INT CHECK (age > 0)
 )
 ```
 
@@ -244,7 +244,7 @@ Any data having this `AUTO_INCREMENT` keyword will be filled with a value automa
 CREATE TABLE new_table (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
-    age INT CHECK (age > 0),
+    age INT CHECK (age > 0)
 );
 ```
 
