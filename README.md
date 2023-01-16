@@ -348,6 +348,20 @@ Here, we will learn how to display the data you want to see. Below is the table 
 > SELECT column1, column2 FROM your_table_name
 > ```
 
+### `LIMIT` to show some of the first rows on the table
+
+Let's assume that you want to output the first five rows on the table. Using `LIMIT` achieves this goal.
+
+> #### Displaying the first five rows of the table
+>
+> ```
+> SELECT column1 FROM your_table_name LIMIT 5;
+> ```
+
+We will revisit some (simple but) more useful tips to use `LIMIT`. Please see PART 2-4.
+
+P.S. For Oracle DB, you must enter `FETCH FIRST 5 ROWS ONLY` instead of `LIMIT`. Remember that there are small differences in syntax among many SQL DBs!
+
 ### `SELECT` with `ORDER BY`
 
 You will have to display the data in a certain order for many cases. `ORDER BY` does it for you.
@@ -740,6 +754,30 @@ Let's recall the `customers` table again.
 > |--------------------------|
 > |          150000          |
 > ```
+
+> #### `DISTINCT` to remove repeated data!
+>
+> ```
+> SELECT DISTINCT num-of-late-payments FROM customers;
+> ```
+>
+> `0` and `1` appear twice on the `num-of-late-payments` column. But, if you add a `DISTINCT` keyword, `0` and `1` will be shown only once on the table as shwon below.
+>
+> ```
+>
+> | num-of-late-payments |
+> | -------------------- |
+> |          0           |
+> |          1           |
+> |          2           |
+> |          3           |
+> |          5           |
+> |          8           /
+> ```
+
+You can generate your own stats based on the results outputted with `DISTINCT`. Sometimes, you might have the chance to make some stats based on data without any redundant data. So, let's just memorize that we can generate many stats using `DISTINCT` data only like `SELECT AVG(DISTINCT your_column) from your_table`
+
+> #### `LIMIT` to find
 
 ### Some useful NUMBER statements
 
