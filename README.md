@@ -840,7 +840,7 @@ We don't have to memorize all the statements shown below. It is just important t
 > TRUNCATE(9.566, 2); // result : 9.56
 > ```
 >
-> #### `POWER` : yes that "power" function you already know
+> #### `POWER` : yes, that "power" function you already know
 >
 > ```
 > SELECT POWER(4,2); // 4 to the 2 = 4^2 = 16
@@ -849,7 +849,7 @@ We don't have to memorize all the statements shown below. It is just important t
 > #### `ABS` : absolute value of the number
 >
 > ```
-> SELECT ABS(-100); // result : 100
+> SELECT ABS(-100); // result : 100;
 > ```
 
 Again, don't memorize the queries above! It is much more important to remember that many useful NUMBER statements wait for you who want to manipulate some number data more easily!
@@ -864,15 +864,49 @@ Again, we don't have to memorize all the statements shown below. Let's just reme
 | Edward     | Hu        |
 | James      | Yoon      |
 
-> #### `CONCAT` :
-
-> #### `TRIM` :
-
-> #### `REPLACE` :
-
+> #### `CONCAT` : concatenation! adds two or more strings together.
+>
+> ```
+> SELECT CONCAT(first-name, ' ', last-name) AS full-name FROM table
+>
+> | full-name    |
+> | ------------ |
+> | Jaehoon Sung |
+> | Edward Hu    |
+> | James Yoon   |
+> ```
+>
+> Postgres, Oracle use `||` symbol for concatenation. Some DBMSs use `+` symbol.
+>
+> ```
+> SELECT first-name || ' ' || last-name FROM your_table;
+> ```
+>
+> #### `TRIM` : removes leading & trailing space (or other characters if designated)
+>
+> ```
+> SELECT TRIM(column_name) FROM your_table;
+> ```
+>
+> #### `REPLACE` : replace all of matching substrings with a new substring.
+>
+> ```
+> SELECT REPLACE("Hi, I am from Korea", "Korea", "Canada"); // result : "Hi, I am from Canada">
+> ```
+>
+> search in `REPLACE` is **case-insensitive!**
+>
 > #### `SUBSTR` :
-
+>
+> ```
+>
+> ```
+>
 > #### `INSERT` :
+>
+> ```
+>
+> ```
 
 ## Part 2-5. `GROUP BY` / `SELECT` in `SELECT` : sub-query!
 
@@ -883,3 +917,7 @@ Again, we don't have to memorize all the statements shown below. Let's just reme
 ## Part 5. Procedure / Function / Index / Transaction
 
 ## Part 6. DB Hosting / ERD (Entity Relationship Diagram) / SQL Injection
+
+```
+
+```
