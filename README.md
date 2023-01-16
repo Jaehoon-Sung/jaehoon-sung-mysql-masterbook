@@ -283,7 +283,7 @@ CREATE TABLE new_table (
 );
 ```
 
-Let's assume that you added an `age` data below 10. Then, you might see an error message saying like "You cannot add this data due to constraint2" on your console or workbench. So, `CONSTRAINT` helps you understand constraints applied in the table by seeing the customized error message. In practice, `constraint2` should have been a text like `age_is_under_10` which helps programmers catch that age must be greater than 10 right away!
+Let's assume that you try to add an `age` data below 10. Then, you might see an error message saying like "You cannot add this data due to constraint2" on your console or workbench. So, `CONSTRAINT` helps you understand constraints applied in the table by seeing the customized error message. In practice, `constraint2` should have been a text like `age_is_under_10` which helps programmers catch that age must be greater than 10 right away!
 
 ### PRO-TIP 1 : How to add constraints to an existing column?
 
