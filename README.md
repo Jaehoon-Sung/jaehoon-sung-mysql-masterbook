@@ -259,7 +259,42 @@ There is no `id` value in the `INSERT` query shown above. It is fine, because `A
 
 ### `CONSTRAINT()` : easier to read & faster to find errors!
 
-### PRO-TIP 1 : How to add constraints to an exiting column?
+There is actually another way to adding constraints on your table data as shown below!
+
+```
+CREATE TABLE new_table (
+    id INT,
+    name VARCHAR(100),
+    age INT,
+    PRIMARY KEY (id),
+    CHECK(age > 10)
+)
+```
+
+Can you see that constraints are separately written from columns? Here, you can apply `CONSTRAINT()` to make it much easier to catch each constraint.
+
+```
+CREATE TABLE new_table (
+    id INT,
+    name VARCHAR(100),
+    age INT,
+    CONSTRAINT constraint1 PRIMARY KEY (id),
+    CONSTRAINT constraint2 CHECK(age > 10)
+);
+```
+
+Let's assume that you added an `age` data below 10. Then, you might see an error message saying like "You cannot add this data due to constraint2" on your console or workbench. So, `CONSTRAINT` helps you understand constraints applied in the table by seeing the customized error message. In practice, `constraint2` should have been a text like `age_is_under_10` which helps programmers catch that age must be greater than 10 right away!
+
+### PRO-TIP 1 : How to add constraints to an existing column?
+
+Adding constraints to an existing column means that you want to modify the column's characteristics! So, you should recall `ALTER TABLE`!
+
+```
+ALTER TABLE your_table
+MODIFY your_column int NOT NULL;
+```
+
+The query shown above add a `NOT NULL` constraint to `your_column` in `your_table`!
 
 ### PRO-TIP 2 : `AUTO_INCREMENT` is actually not a standard SQL syntax.
 
