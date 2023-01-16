@@ -777,17 +777,102 @@ Let's recall the `customers` table again.
 
 You can generate your own stats based on the results outputted with `DISTINCT`. Sometimes, you might have the chance to make some stats based on data without any redundant data. So, let's just memorize that we can generate many stats using `DISTINCT` data only like `SELECT AVG(DISTINCT your_column) from your_table`
 
-> #### `LIMIT` to find
+> #### `LIMIT` to find some values
+>
+> We already learned LIMIT, MAX, and MIN. Even though we can get some maximum/minimum values from the table, it is frequently useful to get them by using LIMIT. In addition, using LIMIT will help you get data like TOP 5 VIP customers, LOWEST 10 users, and etc.
+>
+> ```
+> SELECT * FROM customers ORDER BY total-amount-spent DESC:
+> ```
+>
+> The query above actually returns a maximum value of total-amount-sepnt as `SELECT MAX(total-amount-spent) FROM card;` does.  
+> It is still important to know that you can query a set of some maximum/minimum values using LIMIT. MAX and MIN are not always best keywords to get them in some cases.
 
 ### Some useful NUMBER statements
 
 We don't have to memorize all the statements shown below. It is just important to know that these functions **exist**. If you forget them, just google "SQL number functions"
 
-#### Simple calculations are available!
+> #### Simple calculations are available!
+>
+> For a `total-amount-spent` column in the `customers` table, we know that each amount includes 10% VAT. How can we calculate the amount except that tax amount (Which is equivalent to 90% of a `total-amount-spent`)?
+>
+> ```
+> SELECT 0.9 * total-amount-spent FROM customers; // it's simple!
+> ```
+>
+> #### We can also do simple calculations using columns
+>
+> `SELECT (column1 / column2) FROM your_table;` will return a column1 per column2 value for each row! You might also want to use `AS` to give a meaningful name to it!
+
+> #### Some examples for NUMBER statements
+>
+> You don't have to memorize the queries below. There are also many other NUMBER queries including the queries below.
+>
+> #### `GREATEST`, `LEAST` : select a max/min value in a single row or a set of numbers
+>
+> Don't mix up these keywords with `MAX` and `MIN`. `MAX` and `MIN` return a max/min value for a single column!
+>
+> ```
+> SELECT GREATEST(5, 3, 2, 1, 4);
+> SELECT LEAST(5, 3, 2, 1, 4);
+> ```
+>
+> #### `FLOOR`, `CEIL` : round up/down to the nearest integer
+>
+> ```
+> SELECT FLOOR(10.1); // 10
+> SELECT FLOOR(10.9); // 10
+> SELECT CEIL(10.1); // 11
+> SELECT CEIL(10.9); // 11
+> ```
+>
+> #### `ROUND`, `TRUNCATE` : more sophiscated round functions
+>
+> ROUND(number, decimals) : Round to the decimals
+>
+> ```
+> ROUND(9.566, 2); // result : 9.57
+> ```
+>
+> TRUNCATE(number, decimals) : Truncate any number below the decimals (Round down to the decimals)
+>
+> ```
+> TRUNCATE(9.566, 2); // result : 9.56
+> ```
+>
+> #### `POWER` : yes that "power" function you already know
+>
+> ```
+> SELECT POWER(4,2); // 4 to the 2 = 4^2 = 16
+> ```
+>
+> #### `ABS` : absolute value of the number
+>
+> ```
+> SELECT ABS(-100); // result : 100
+> ```
+
+Again, don't memorize the queries above! It is much more important to remember that many useful NUMBER statements wait for you who want to manipulate some number data more easily!
 
 ### Some useful STRING statements
 
-Again, we don't have to memorize all the statements shown below. Let's just remember that they **exist**. We can search by googling "SQL string functions"
+Again, we don't have to memorize all the statements shown below. Let's just remember that they **exist**. We can search by googling "SQL string functions". Let's use a simple table shown below to learn some STRING examples.
+
+| first-name | last-name |
+| ---------- | --------- |
+| Jaehoon    | Sung      |
+| Edward     | Hu        |
+| James      | Yoon      |
+
+> #### `CONCAT` :
+
+> #### `TRIM` :
+
+> #### `REPLACE` :
+
+> #### `SUBSTR` :
+
+> #### `INSERT` :
 
 ## Part 2-5. `GROUP BY` / `SELECT` in `SELECT` : sub-query!
 
