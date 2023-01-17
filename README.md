@@ -921,7 +921,7 @@ Again, we don't have to memorize all the statements shown below. Let's just reme
 
 ## Part 2-6. `IF` & `CASE` also exist in SQL!
 
-## Part 3-1. Normal Form : 1NF. 2NF. 3NF. etc...
+## Part 3-0. Intro to Normalization & Normal Form : Why do we use `JOIN`?
 
 Welcome to Part 3! Here, we will learn another important SQL queries called `JOIN`. Many people struggle to understand when and how to use `JOIN`. To understand why this `JOIN` is important to know, we must learn normalization, which is a DB design technique to reduce redundancy and improve efficiency in data storage.
 
@@ -966,12 +966,14 @@ But still, aren't you curious why all of sports courses and instructors are stor
 
 I think that this question is very legit to ask! Now, I will start to convince you why this table is actually split into two tables for data efficiency. Actually, many programmers already found it more efficient to manage relational databases in this way, which is now we call `Normalization`! Are you ready to learn about `Normalization` now? Relax, and I would appreciate if you could just read this section as if you read a short story!
 
-### 1NF (1st Normal Form)
+## Part 3-1. 1NF : 1st Normal Form to secure `atomicity` for each value
+
+### 1NF (1st Normal Form) Storytelling
 
 Imagine that we become a software engineer lead at JAE sports center. We should make the list of customers at our center.
 
 ```
-| member id | member name | enrolled course |
+| member-id | member-name | enrolled-course |
 | --------- | ----------- | --------------- |
 | 1         | Scott       | badminton       |
 | 2         | Tom         | swimming        |
@@ -984,7 +986,7 @@ One day, Andrew enrolled a table tennis course, too. Then, how would you update 
 
 Choice 1]                                          Choice 2]
 
-| member id | member name | enrolled course      | | member id | member name | enrolled course |
+| member-id | member-name | enrolled-course      | | member-id | member-name | enrolled-course |
 | --------- | ----------- | -------------------- | | --------- | ----------- | --------------- |
 | 1         | Scott       | badminton            | | 1         | Scott       | badminton       |
 | 2         | Tom         | swimming             | | 2         | Tom         | swimming        |
@@ -992,6 +994,59 @@ Choice 1]                                          Choice 2]
                                                    | 3         | Andrew      | table tennis    |
 
 ```
+
+`Choice 2` is actually a better way to update. `Choice 1` might be better to our humans, but **NOT** to a SQL DBMS.
+
+Imagine that you would have thousands of thousands members at the center. Then, what would be the query syntax to find any member who enrolled a table tennis course? It might be like `WHERE enrolled-course LIKE '%table tennis%'. How about the query for the situation where Andrew enrolls another different course? A `enrolled-course`string for Andrew becomes longer and longer, which definitely makes it hard for us to find or update any necessary information in it. We do have to be a`SUBSTR` master, doesn't we?
+
+On the other hand, you can just stick to `WHERE enrolled-course = 'table tennis'`, while you can just add another row for Andrew, if he wants to enroll another course.
+
+So, here we just learned what `1NF` is! `1NF` means that one column must have **one meaningful value** only. To be fancy, we say that all columns must contain atomic values. Think about the meaning of `atom` we learn in the Chemistry course: "An atom is the basic unit of matter".
+
+### Still leaning toware Choice 1? Do we have `array` or `JSON` types tho..?
+
+Good catch, actually. For example, Postgre supports an `array` type! Or, we can just save the data using an array/JSON type. However, they are virtually stored as a string in database, and they still require us of doing some extra works to get an element stored in an array or JSON. Updating each element in an array/JSON is also annoying, because we will have to take and update some of elements into it meticulously, not the whole array/JSON set.
+
+#### PRO-TIP #1
+
+Sometimes, array or JSON-typed data are saved in the table. To update this data more easily, programmers actually overwrite the whole data having new information, not taking and updating a substring to manipulate elements.
+
+#### PRO-TOP #2
+
+Many **non**-relational database do not apply 1N normalization, while relational database really need this 1N form for optimization.
+
+## Part 3-2. 2NF : 2nd Normal Form to remove partial dependancy
+
+### 2NF (2nd Normal Form) Storytelling
+
+Now, we have a DB table at the center shown as below.
+
+```
+| member-id | member-name | enrolled-course | course-fee | fee-paid |
+| --------- | ----------- | --------------- | ---------- | -------- |
+| 1         | Scott       | badminton       | $300       | 0        |
+| 2         | Tom         | swimming        | $250       | 1        |
+| 3         | Andrew      | tennis          | $500       | 1        |
+```
+
+Due to a high inflation rate, JAE sports center just decides to increase a course-fee for swimming. It will be $300, not $250. Then, what would happen to this table? You must find any row data of members who are currently enrolled on swimming, and update each fee of these data. Assume that there are thousands of people who swim at the center. Then, you must ask a DBMS to find thousands rows of data and update each value for them **JUST** to change a course-fee information for a swimming course only.
+
+The solution for this situation will be `2nd Normal Form`!
+
+```
+Table 1] Member List                                     Table 2] Course Info List
+| member-id | member-name | enrolled-course | fee-paid | | enrolled-course | course-fee |
+| --------- | ----------- | --------------- | -------- | | --------------- | ---------- |
+| 1         | Scott       | badminton       | 0        | | badminton       | $300       |
+| 2         | Tom         | swimming        | 1        | | swimming        | $250       |
+| 3         | Andrew      | tennis          | 1        | | tennis          | $500       |
+```
+
+Now, revisit the situation where we should change a course-fee for swimming. We can just get into `Table 2`, and just change a single value for swimming on a course-fee column!
+
+Unfortunately, this `2NF` has a "disadvantage", which is already discussed above in Part 3-0! Now, we cannot see how much each member should pay by looking at the `Table 1` only! We must look at both tables together. (That is why some **non**-relational databases do not use normal forms!) To help our SQL DBMS find how much each member should pay in 2NF tables, we must use `JOIN` syntax! Are you getting understood the need for `JOIN` syntax? :slightly_smiling_face: `JOIN` will help us generate some meaningful results from two or more tables!
+
+### Partial Dependancy : revisit 2NF with a more computer-scientific knowledge!
 
 ## Part 3-2. Join / CRUDing data
 
