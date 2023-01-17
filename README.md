@@ -1048,10 +1048,16 @@ Unfortunately, this `2NF` has a "disadvantage", which is already discussed above
 
 ### Partial Dependancy : revisit 2NF with a more computer-scientific knowledge!
 
-## Part 3-2. Join / CRUDing data
+The process of making 2NF tables (making a course info table to store course-fee separately) is viewed as the process of removing **`Partial Dependancy`**. To know the meaning of `partial dependancy`, we need to review the concepts of `PRIMARY KEY`, and `COMPOSITE PRIMARY KEY`!
 
-## Part 5. Procedure / Function / Index / Transaction
+## Part 3-3. 3NF & Foreign Key : 3rd Normal Form to remove transitive dependancy
+
+## Part 3-4. `JOIN` syntax
+
+## Part 3-5. CRUDing data
+
+## Part 4. Procedure / Function / Index / Transaction
 
 ### Index :
 
-## Part 6. DB Hosting / ERD (Entity Relationship Diagram) / SQL Injection
+## Part 5. DB Hosting / ERD (Entity Relationship Diagram) / SQL Injection
