@@ -923,7 +923,7 @@ Again, we don't have to memorize all the statements shown below. Let's just reme
 
 ## Part 3-1. Normal Form : 1NF. 2NF. 3NF. etc...
 
-Welcome to Part 3! Here, we will learn another important SQL queries called `JOIN`. Many people struggle to understand when and how to use `JOIN`. To understand why this `JOIN` is important to know, we must learn normalization, which is a DB design technique which reduce redundancy and improve efficiency in data storage.
+Welcome to Part 3! Here, we will learn another important SQL queries called `JOIN`. Many people struggle to understand when and how to use `JOIN`. To understand why this `JOIN` is important to know, we must learn normalization, which is a DB design technique to reduce redundancy and improve efficiency in data storage.
 
 `JOIN` basically produces various "joined" results derived from two or more tables related to one another. Let's see two tables shown below.
 
@@ -954,20 +954,44 @@ Here, you can understand that `Table 1` has information about sports courses, an
 But still, aren't you curious why all of sports courses and instructors are stored in each separate table? Would it be actually simple to know using one table as below?
 
 ```
-| id  | sports course         | instructor id | alma mater  |
-| --- | --------------------- | ------------- | ----------- |
-| 1   | badminton             | Jaehoon Sung  | AAA Univ    |
-| 2   | swimming beginner     | Robert Kim    | BBB College |
-| 3   | swimming intermediate | Robert Kim    | BBB College |
-| 4   | tennis                | David Hu      | CCC College |
-| 5   | table tennis          | David Hu      | CCC College |
+| id  | sports course         | instructor   | alma mater  |
+| --- | --------------------- | ------------ | ----------- |
+| 1   | badminton             | Jaehoon Sung | AAA Univ    |
+| 2   | swimming beginner     | Robert Kim   | BBB College |
+| 3   | swimming intermediate | Robert Kim   | BBB College |
+| 4   | tennis                | David Hu     | CCC College |
+| 5   | table tennis          | David Hu     | CCC College |
+
 ```
 
-I think that this question is very legit to ask! Now, I will start to convince you why this table is actually split into two tables for data efficiency. Actually, many programmers already found it more efficient to manage relational databases in this way, which is now we call `Normalization`! Are you ready to learn about `Normalization` now?
+I think that this question is very legit to ask! Now, I will start to convince you why this table is actually split into two tables for data efficiency. Actually, many programmers already found it more efficient to manage relational databases in this way, which is now we call `Normalization`! Are you ready to learn about `Normalization` now? Relax, and I would appreciate if you could just read this section as if you read a short story!
 
 ### 1NF (1st Normal Form)
 
-Imagine that you become a software engineer lead at JAE sports center.
+Imagine that we become a software engineer lead at JAE sports center. We should make the list of customers at our center.
+
+```
+| member id | member name | enrolled course |
+| --------- | ----------- | --------------- |
+| 1         | Scott       | badminton       |
+| 2         | Tom         | swimming        |
+| 3         | Andrew      | tennis          |
+```
+
+One day, Andrew enrolled a table tennis course, too. Then, how would you update Andrew's enrolled course? I will give you two choices.
+
+```
+
+Choice 1]                                          Choice 2]
+
+| member id | member name | enrolled course      | | member id | member name | enrolled course |
+| --------- | ----------- | -------------------- | | --------- | ----------- | --------------- |
+| 1         | Scott       | badminton            | | 1         | Scott       | badminton       |
+| 2         | Tom         | swimming             | | 2         | Tom         | swimming        |
+| 3         | Andrew      | tennis, table tennis | | 3         | Andrew      | tennis          |
+                                                   | 3         | Andrew      | table tennis    |
+
+```
 
 ## Part 3-2. Join / CRUDing data
 
@@ -976,7 +1000,3 @@ Imagine that you become a software engineer lead at JAE sports center.
 ### Index :
 
 ## Part 6. DB Hosting / ERD (Entity Relationship Diagram) / SQL Injection
-
-```
-
-```
