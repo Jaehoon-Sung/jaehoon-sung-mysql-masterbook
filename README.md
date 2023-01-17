@@ -919,11 +919,61 @@ Again, we don't have to memorize all the statements shown below. Let's just reme
 
 ## Part 2-5. `GROUP BY` / `SELECT` in `SELECT` : sub-query!
 
+## Part 2-6. `IF` & `CASE` also exist in SQL!
+
 ## Part 3-1. Normal Form : 1NF. 2NF. 3NF. etc...
+
+Welcome to Part 3! Here, we will learn another important SQL queries called `JOIN`. Many people struggle to understand when and how to use `JOIN`. To understand why this `JOIN` is important to know, we must learn normalization, which is a DB design technique which reduce redundancy and improve efficiency in data storage.
+
+`JOIN` basically produces various "joined" results derived from two or more tables related to one another. Let's see two tables shown below.
+
+Table 1] List of sports course in JAE sports complex
+
+```
+| id  | sports course         | instructor id |
+| --- | --------------------- | ------------- |
+| 1   | badminton             | 1             |
+| 2   | swimming beginner     | 2             |
+| 3   | swimming intermediate | 2             |
+| 4   | tennis                | 3             |
+| 5   | table tennis          | 3             |
+```
+
+Table 2] List of instructors working in JAE sports complex
+
+```
+| id  | instructor   | alma mater  |
+| --- | ------------ | ----------- |
+| 1   | Jaehoon Sung | AAA Univ    |
+| 2   | Robert Kim   | BBB College |
+| 3   | David Hu     | CCC College |
+```
+
+Here, you can understand that `Table 1` has information about sports courses, and it has an unique id for each instructor (instructor id). Then, each instructor id is actually also stored on `id` column in `Table 2` which has information about instructors. So, if you link these two tables using `instructor id` in `Table 1` and `id` in `Table 2`, you can see what instrutors teaches what course. To know this connection among related tables, you will use `JOIN` syntax.
+
+But still, aren't you curious why all of sports courses and instructors are stored in each separate table? Would it be actually simple to know using one table as below?
+
+```
+| id  | sports course         | instructor id | alma mater  |
+| --- | --------------------- | ------------- | ----------- |
+| 1   | badminton             | Jaehoon Sung  | AAA Univ    |
+| 2   | swimming beginner     | Robert Kim    | BBB College |
+| 3   | swimming intermediate | Robert Kim    | BBB College |
+| 4   | tennis                | David Hu      | CCC College |
+| 5   | table tennis          | David Hu      | CCC College |
+```
+
+I think that this question is very legit to ask! Now, I will start to convince you why this table is actually split into two tables for data efficiency. Actually, many programmers already found it more efficient to manage relational databases in this way, which is now we call `Normalization`! Are you ready to learn about `Normalization` now?
+
+### 1NF (1st Normal Form)
+
+Imagine that you become a software engineer lead at JAE sports center.
 
 ## Part 3-2. Join / CRUDing data
 
 ## Part 5. Procedure / Function / Index / Transaction
+
+### Index :
 
 ## Part 6. DB Hosting / ERD (Entity Relationship Diagram) / SQL Injection
 
