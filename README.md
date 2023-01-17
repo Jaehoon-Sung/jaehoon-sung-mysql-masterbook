@@ -906,10 +906,15 @@ Again, we don't have to memorize all the statements shown below. Let's just reme
 > SELECT SUBSTR('abcdef', 3, 2); // starts to extract two chracters from the 3rd chracter. result : "cd"
 > ```
 >
-> #### `INSERT` :
+> #### `INSERT` : a more sophicated `REPLACE` method
+>
+> See an example below. It is easier to figure out how it works with the example!
 >
 > ```
+> SELECT INSERT('test@email.com', 1, 4, 'Jaehoon')
 >
+> // The query above says : please take a substring from the 1st to the 4th character, and replace it with "Jaehoon"
+> // result : Jaehoon@email.com
 > ```
 
 ## Part 2-5. `GROUP BY` / `SELECT` in `SELECT` : sub-query!
