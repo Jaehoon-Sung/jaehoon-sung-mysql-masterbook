@@ -890,16 +890,20 @@ Again, we don't have to memorize all the statements shown below. Let's just reme
 >
 > #### `REPLACE` : replace all of matching substrings with a new substring.
 >
+> REPLACE(whole_string, a_string_you_want_to_erase, a_string_you_want_to_add);
+>
 > ```
-> SELECT REPLACE("Hi, I am from Korea", "Korea", "Canada"); // result : "Hi, I am from Canada">
+> SELECT REPLACE("Hi, I am from Korea", "Korea", "Canada"); // result : "Hi, I am from Canada"
 > ```
 >
 > search in `REPLACE` is **case-insensitive!**
 >
-> #### `SUBSTR` :
+> #### `SUBSTR` : extract a substring from a string as you want
+>
+> SUBSTR(whole_string, nth_character_where_you_want_to_start_extract, num_of_chracters_you_want_to_extract_from_your_nth_chracter);
 >
 > ```
->
+> SELECT SUBSTR('abcdef', 3, 2); // starts to extract two chracters from the 3rd chracter. result : "cd"
 > ```
 >
 > #### `INSERT` :
