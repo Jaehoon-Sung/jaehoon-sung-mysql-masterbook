@@ -1015,7 +1015,7 @@ Sometimes, array or JSON-typed data are saved in the table. To update this data 
 
 Many **non**-relational database do not apply 1N normalization, while relational database really need this 1N form for optimization.
 
-## Part 3-2. 2NF : 2nd Normal Form to remove partial dependancy
+## Part 3-2. 2NF : 2nd Normal Form to remove partial dependency
 
 ### 2NF (2nd Normal Form) Storytelling
 
@@ -1046,9 +1046,9 @@ Now, revisit the situation where we should change a course-fee for swimming. We 
 
 Unfortunately, this `2NF` has a "disadvantage", which is already discussed above in Part 3-0! Now, we cannot see how much each member should pay by looking at the `Table 1` only! We must look at both tables together. (That is why some **non**-relational databases do not use normal forms!) To help our SQL DBMS find how much each member should pay in 2NF tables, we must use `JOIN` syntax! Are you getting understood the need for `JOIN` syntax? :slightly_smiling_face: `JOIN` will help us generate some meaningful results from two or more tables!
 
-### Partial Dependancy : revisit 2NF with a more computer-scientific knowledge!
+### Partial Dependency : revisit 2NF with a more computer-scientific knowledge!
 
-The process of making 2NF tables (making a course info table to store course-fee separately) is viewed as the process of removing **`Partial Dependancy`**. To know the meaning of `partial dependancy`, we need to review the concepts of `PRIMARY KEY`, and `COMPOSITE PRIMARY KEY`!
+The process of making 2NF tables (making a course info table to store course-fee separately) is viewed as the process of removing **`Partial Dependency`**. To know the meaning of `partial dependency`, we need to review the concepts of `PRIMARY KEY`, and `COMPOSITE PRIMARY KEY`!
 
 We learned that `PRIMARY KEY` is an unique key to distinguish each row data. In addition, I gave a **SPOILER ALERT** that we would learn about `COMPOSITE PRIMARY KEY`! `COMPOSITE PRIMARY KEY` is a `PRIMARY KEY` composed of two or more columns. In other words, if any combination of columns in the table to distinguish each row data exists, that combination is called `COMPOSITE PRIMARY KEY`. Let's revisit the table we already saw above.
 
@@ -1063,9 +1063,9 @@ We learned that `PRIMARY KEY` is an unique key to distinguish each row data. In 
 
 `member-id` **+** `enrolled-course` can be a `PRIMARY KEY` for the table above. Technically, as we need two columns (`member-id` & `enrolled-course`) to desginate a primary key for the table, it should be called `COMPOSITE PRIMARY KEY`. On the other hand, `member-id` cannot be a `PRIMARY KEY`, because it is not unique for each row. That is, if one person enrolls two or more courses, `member-id` is repeated on the table. Similarly, `enrolled-course` cannot be a `PRIMARY KEY`, because two or more members can enroll the same sports course!
 
-Then, what is **`Partial Dependacy`**? `Partial dependancy` means a column which is **partially** dependent on some of columns which compose a `COMPOSITE PRIMARY KEY`. Let's visit the table again. We already found that `member-id` + `enrolled-course` is a composite primary key. There, see `course-fee`. On what column does `course-fee` depend? `course-fee` depends on `enrolled-course` only, doesn't it?
+Then, what is **`Partial Dependacy`**? `Partial dependency` means a column which is **partially** dependent on some of columns which compose a `COMPOSITE PRIMARY KEY`. Let's visit the table again. We already found that `member-id` + `enrolled-course` is a composite primary key. There, see `course-fee`. On what column does `course-fee` depend? `course-fee` depends on `enrolled-course` only, doesn't it?
 
-In other words, `course-fee` depends on `enrolled-course`, which is **one** of a composite primary key (`member-id` + `enrolled-course`) for the table. Then, we can say that `course-fee` has a partial dependancy on the table. Therefore, to suffice the 2NF conditions, we should create a new table showing `course-fee` info separately. That is why we got a set of two tables shown below!
+In other words, `course-fee` depends on `enrolled-course`, which is **one** of a composite primary key (`member-id` + `enrolled-course`) for the table. Then, we can say that `course-fee` has a partial dependency on the table. Therefore, to suffice the 2NF conditions, we should create a new table showing `course-fee` info separately. That is why we got a set of two tables shown below!
 
 ```
 Table 1] Member List                                     Table 2] Course Info List
@@ -1081,7 +1081,35 @@ Table 1] Member List                                     Table 2] Course Info Li
 
 ### 2NF Pop Quizzes
 
-## Part 3-3. 3NF & Foreign Key : to remove transitive dependancy
+## Part 3-3. 3NF & Foreign Key : to remove transitive dependency
+
+### 3NF (3rd Normal Form) Storytelling
+
+How was a story about 2NF? Before learning about 3NF, I would like to summarize the meaning of normalization very roughly with a sentence. It is the process of removing redundancy and dependency of a table. As I already said in TLDR for 2NF section, it is just to remove off-topic columns and store them more efficiently! Through 2NF, we managed the data which has a partial dependency.
+
+Here, normalization for 3NF is the similar process to 2NF. If you store columns which have **nothing** to do with primary key **or** composite primary key, you finish normalization for 3NF! Let's dive into an example.
+
+So, below is the updated course info list table which contains instructor information for each course.
+
+```
+Table : course info list
+| enrolled-course | course-fee | instructor | instructor-college |
+| --------------- | ---------- | ---------- | ------------------ |
+| badminton       | $300       | Tom        | AAA College        |
+| swimming        | $250       | Jane       | BBB College        |
+| tennis          | $500       | Mike       | CCC Univeristy     |
+| tennis-level-2  | $300       | Mike       | CCC University     |
+```
+
+Let's just check if this table is 2NF. The answer will be YES, because a primary key for this table is `enrolled-course` and no column does **not** has partial dependency. (A primary key is **not** a composite primary key, so no column has partial dependency.) To know the definition of 2NF correctly, you should recall that partial dependency is the dependency which columns have on some of the whole columns which compose **composite primary key**.
+
+Here, many of you might be confused about the meaning of partial dependency, because you might see some dependency relationship in the table above. Let's focus on `enrolled-course`, `instructor`, and `instructor-college`. We know clearly that `enrolled-course` is a primary key, and `instructor` is a column which depends on `enrolled-course`. **Then,** `instructor-college` depends on `instructor`! In other words with a pun, `instructor-college` depends on `instructor` which depends on `enrolled-course`, which is a primary key.
+
+**BE CAREFULL AGAIN!!** What is **most important** is that we are **NOT** saying that `instructor-college` has a partial dependancy on `enrolled-course`. By definition, partial dependacy is a column which depends some of columns which compose a composite primary key. But, the table shown above actually does **NOT** have a composite primary key.
+
+We actually say that `instructor-college` has **`transitive dependency`** on `enrolled-course`! The details follows below!
+
+### Transitive Dependency : revisit 3NF with a more computer-scientific knowledge!
 
 ## Part 3-4. `JOIN` syntax
 
