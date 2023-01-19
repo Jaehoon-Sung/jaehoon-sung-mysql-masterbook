@@ -1111,7 +1111,7 @@ We actually say that `instructor-college` has **`transitive dependency`** on `en
 
 ### Transitive Dependency : revisit 3NF with a more computer-scientific knowledge!
 
-Assume that there are three columns: column 1, column 2, and column 3. Column 1 is a primary key, and column 2 has data which depend on Column 2. In addition, Column 3 data depend on Column 2. Here, even though column 3 does not **directly** depend on column 2, column 3 depends on column 2 and column 2 depends on column 1. For this relationship, we are saying that column 1 has transitive dependency on column 3.
+Assume that there are three columns: column 1, column 2, and column 3. Column 1 is a primary key, and column 2 has data which depend on Column 1. In addition, Column 3 data depend on Column 2. Here, column 3 does not **directly** depend on column 1; column 3 depends on column 2 and column 2 depends on column 1. For this relationship, we are saying that column 3 has transitive dependency on column 1.
 
 ```
 Table : course info list
