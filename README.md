@@ -1077,7 +1077,7 @@ Table 1] Member List                                     Table 2] Course Info Li
 | 3         | Andrew      | table tennis    | 0        | | table tennis    | $300       |
 ```
 
-**TLDR?** 2NF = Remove all of the columns which are "off-topic" and store them in a separate table! :smiling:
+**TLDR?** 2NF = Remove all of the columns which are "off-topic" and store them in a separate table! ::smiling::
 
 ### 2NF Pop Quizzes
 
@@ -1085,9 +1085,9 @@ Table 1] Member List                                     Table 2] Course Info Li
 
 ### 3NF (3rd Normal Form) Storytelling
 
-How was a story about 2NF? Before learning about 3NF, I would like to summarize the meaning of normalization very roughly with a sentence. It is the process of removing redundancy and dependency of a table. As I already said in TLDR for 2NF section, it is just to remove off-topic columns and store them more efficiently! Through 2NF, we managed the data which has a partial dependency.
+How was a story about 2NF? Before learning about 3NF, I would like to summarize the meaning of normalization very roughly. It is the process of removing redundancy and dependency of a table. As I already said in TLDR for 2NF section, it is just to remove off-topic columns and store them more efficiently! Through 2NF, we managed the data which has a partial dependency.
 
-Here, normalization for 3NF is the similar process to 2NF. If you store columns which have **nothing** to do with primary key **or** composite primary key, you finish normalization for 3NF! Let's dive into an example.
+Here, normalization for 3NF is the similar process to 2NF. If you store columns which have **nothing** to do with primary key **or** composite primary key **in separate tables**, you finish normalization for 3NF! Let's dive into an example.
 
 So, below is the updated course info list table which contains instructor information for each course.
 
@@ -1105,11 +1105,53 @@ Let's just check if this table is 2NF. The answer will be YES, because a primary
 
 Here, many of you might be confused about the meaning of partial dependency, because you might see some dependency relationship in the table above. Let's focus on `enrolled-course`, `instructor`, and `instructor-college`. We know clearly that `enrolled-course` is a primary key, and `instructor` is a column which depends on `enrolled-course`. **Then,** `instructor-college` depends on `instructor`! In other words with a pun, `instructor-college` depends on `instructor` which depends on `enrolled-course`, which is a primary key.
 
-**BE CAREFULL AGAIN!!** What is **most important** is that we are **NOT** saying that `instructor-college` has a partial dependancy on `enrolled-course`. By definition, partial dependacy is a column which depends some of columns which compose a composite primary key. But, the table shown above actually does **NOT** have a composite primary key.
+**BE CAREFULL AGAIN!!** What is **most important** is that we are **NOT** saying that `instructor-college` has a partial dependancy on `enrolled-course`. By definition, partial dependacy is a column which depends some of columns which compose a **composite primary key**. But, the table shown above actually does **NOT** have a composite primary key.
 
 We actually say that `instructor-college` has **`transitive dependency`** on `enrolled-course`! The details follows below!
 
 ### Transitive Dependency : revisit 3NF with a more computer-scientific knowledge!
+
+Assume that there are three columns: column 1, column 2, and column 3. Column 1 is a primary key, and column 2 has data which depend on Column 2. In addition, Column 3 data depend on Column 2. Here, even though column 3 does not **directly** depend on column 2, column 3 depends on column 2 and column 2 depends on column 1. For this relationship, we are saying that column 1 has transitive dependency on column 3.
+
+```
+Table : course info list
+| enrolled-course | course-fee | instructor | instructor-college |
+| --------------- | ---------- | ---------- | ------------------ |
+| badminton       | $300       | Tom        | AAA College        |
+| swimming        | $250       | Jane       | BBB College        |
+| tennis          | $500       | Mike       | CCC Univeristy     |
+| tennis-level-2  | $300       | Mike       | CCC University     |
+```
+
+Now, I hope that you have a clearer view on the relationship between `instructor-college` and `enrolled-course`. `instructor-college` depends on `instructor`, and `instructor` depends on `enrolled-course`. So, `instructor-college` has transitive dependency on `enrolled-course`. Removing this transitive dependency, we should have a new design shown below.
+
+```
+[Old Design]
+Table : course info list
+| enrolled-course | course-fee | instructor | instructor-college |
+| --------------- | ---------- | ---------- | ------------------ |
+| badminton       | $300       | Tom        | AAA College        |
+| swimming        | $250       | Jane       | BBB College        |
+| tennis          | $500       | Mike       | CCC University     |
+| tennis-level-2  | $300       | Mike       | CCC University     |
+
+[New Design]
+Table 1 : Course Info                         Table 2 : Instructor Info
+| enrolled-course | course-fee | instructor | | instructor | instructor-college |
+| --------------- | ---------- | ---------- | | ---------- | ------------------ |
+| badminton       | $300       | Tom        | | Tom        | AAA College        |
+| swimming        | $250       | Jane       | | Jane       | BBB College        |
+| tennis          | $500       | Mike       | | Mike       | CCC University     |
+| tennis-level-2  | $300       | Mike       |
+```
+
+Then, what advantages the new design have? Imagine that instructor Mike wants us to update his academics info. He just finishes his master degree in sports management at DDD University. Using the old design, you must select and update **ALL** of the rows which contains Mike's information.
+
+However, using the new design, even though there can be a thousand courses Mike teaches at our sports center, we can just update `instructor-college` for Mike in Table 2, just a single row data! So, it is clear that we secure more stability to update data.
+
+**TLDR?** Remind yourself of the definition of transitive dependency. Store column data separately, if they depend on **not** important columns (columns which have nothing to do with primary key/composite primary key)!
+
+**But don't we have to visit two tables to get the instructor info, after 3NF normalization?** Yes, it's correct! Normalization is the process to store data appropriately in several tables, so we should visit two tables with the new design, while the old design can return `instructor-college` directly. This is why it's time to learn about `JOIN` syntax! ::smiling::
 
 ## Part 3-4. `JOIN` syntax
 
