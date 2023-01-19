@@ -1077,7 +1077,7 @@ Table 1] Member List                                     Table 2] Course Info Li
 | 3         | Andrew      | table tennis    | 0        | | table tennis    | $300       |
 ```
 
-**TLDR?** 2NF = Remove all of the columns which are "off-topic" and store them in a separate table! ::smiling::
+**TLDR?** 2NF = Remove all of the columns which are "off-topic" and store them in a separate table! :smile:
 
 ### 2NF Pop Quizzes
 
@@ -1151,7 +1151,7 @@ However, using the new design, even though there can be a thousand courses Mike 
 
 **TLDR?** Remind yourself of the definition of transitive dependency. Store column data separately, if they depend on **not** important columns (columns which have nothing to do with primary key/composite primary key)!
 
-**But don't we have to visit two tables to get the instructor info, after 3NF normalization?** Yes, it's correct! Normalization is the process to store data appropriately in several tables, so we should visit two tables with the new design, while the old design can return `instructor-college` directly. This is why it's time to learn about `JOIN` syntax! ::smiling::
+**But don't we have to visit two tables to get the instructor info, after 3NF normalization?** Yes, it's correct! Normalization is the process to store data appropriately in several tables, so we should visit two tables with the new design, while the old design can return `instructor-college` directly. This is why it's time to learn about `JOIN` syntax! :smile:
 
 ## Part 3-4. `JOIN` syntax
 
