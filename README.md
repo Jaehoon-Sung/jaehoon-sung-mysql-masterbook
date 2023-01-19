@@ -209,7 +209,7 @@ CREATE TABLE new_table (
 
 ### `PRIMARY KEY` : a value which distinguishes each row data
 
-Assume that you are a college student. Then, what value can be used as an unique key to distingush your information from others? Your name, age, or major cannot be used, because there can be students who have the same name, age, or major. Maybe, your student ID can be. If a college gives each student an unique student ID, it can distinguish each student regardless of other values. Here, the column for student ID is called `PRIMARY KEY`, which helps you distinguish each row data.
+Assume that you are a college student. Then, what value can be used as an unique key to distinguish your information from others? Your name, age, or major cannot be used, because there can be students who have the same name, age, or major. Maybe, your student ID can be. If a college gives each student an unique student ID, it can distinguish each student regardless of other values. Here, the column for student ID is called `PRIMARY KEY`, which helps you distinguish each row data.
 
 TLDR : pick the column which can be used a `PRIMARY KEY` to distinguish each row data from the table shown below!
 
@@ -1050,7 +1050,38 @@ Unfortunately, this `2NF` has a "disadvantage", which is already discussed above
 
 The process of making 2NF tables (making a course info table to store course-fee separately) is viewed as the process of removing **`Partial Dependancy`**. To know the meaning of `partial dependancy`, we need to review the concepts of `PRIMARY KEY`, and `COMPOSITE PRIMARY KEY`!
 
-## Part 3-3. 3NF & Foreign Key : 3rd Normal Form to remove transitive dependancy
+We learned that `PRIMARY KEY` is an unique key to distinguish each row data. In addition, I gave a **SPOILER ALERT** that we would learn about `COMPOSITE PRIMARY KEY`! `COMPOSITE PRIMARY KEY` is a `PRIMARY KEY` composed of two or more columns. In other words, if any combination of columns in the table to distinguish each row data exists, that combination is called `COMPOSITE PRIMARY KEY`. Let's revisit the table we already saw above.
+
+```
+| member-id | member-name | enrolled-course | course-fee | fee-paid |
+| --------- | ----------- | --------------- | ---------- | -------- |
+| 1         | Scott       | badminton       | $300       | 0        |
+| 2         | Tom         | tennis          | $250       | 1        |
+| 3         | Andrew      | tennis          | $500       | 1        |
+| 3         | Andrew      | table tennis    | $300       | 0        |
+```
+
+`member-id` **+** `enrolled-course` can be a `PRIMARY KEY` for the table above. Technically, as we need two columns (`member-id` & `enrolled-course`) to desginate a primary key for the table, it should be called `COMPOSITE PRIMARY KEY`. On the other hand, `member-id` cannot be a `PRIMARY KEY`, because it is not unique for each row. That is, if one person enrolls two or more courses, `member-id` is repeated on the table. Similarly, `enrolled-course` cannot be a `PRIMARY KEY`, because two or more members can enroll the same sports course!
+
+Then, what is **`Partial Dependacy`**? `Partial dependancy` means a column which is **partially** dependent on some of columns which compose a `COMPOSITE PRIMARY KEY`. Let's visit the table again. We already found that `member-id` + `enrolled-course` is a composite primary key. There, see `course-fee`. On what column does `course-fee` depend? `course-fee` depends on `enrolled-course` only, doesn't it?
+
+In other words, `course-fee` depends on `enrolled-course`, which is **one** of a composite primary key (`member-id` + `enrolled-course`) for the table. Then, we can say that `course-fee` has a partial dependancy on the table. Therefore, to suffice the 2NF conditions, we should create a new table showing `course-fee` info separately. That is why we got a set of two tables shown below!
+
+```
+Table 1] Member List                                     Table 2] Course Info List
+| member-id | member-name | enrolled-course | fee-paid | | enrolled-course | course-fee |
+| --------- | ----------- | --------------- | -------- | | --------------- | ---------- |
+| 1         | Scott       | badminton       | 0        | | badminton       | $300       |
+| 2         | Tom         | tennis          | 1        | | swimming        | $250       |
+| 3         | Andrew      | tennis          | 1        | | tennis          | $500       |
+| 3         | Andrew      | table tennis    | 0        | | table tennis    | $300       |
+```
+
+**TLDR?** 2NF = Remove all of the columns which are "off-topic" and store them in a separate table! :smiling:
+
+### 2NF Pop Quizzes
+
+## Part 3-3. 3NF & Foreign Key : to remove transitive dependancy
 
 ## Part 3-4. `JOIN` syntax
 
