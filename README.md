@@ -1081,7 +1081,7 @@ Table 1] Member List                                     Table 2] Course Info Li
 
 ### 2NF Pop Quizzes
 
-## Part 3-3. 3NF & Foreign Key : to remove transitive dependency
+## Part 3-3. 3NF : to remove transitive dependency
 
 ### 3NF (3rd Normal Form) Storytelling
 
@@ -1151,7 +1151,75 @@ However, using the new design, even though there can be a thousand courses Mike 
 
 **TLDR?** Remind yourself of the definition of transitive dependency. Store column data separately, if they depend on **not** important columns (columns which have nothing to do with primary key/composite primary key)!
 
-**But don't we have to visit two tables to get the instructor info, after 3NF normalization?** Yes, it's correct! Normalization is the process to store data appropriately in several tables, so we should visit two tables with the new design, while the old design can return `instructor-college` directly. This is why it's time to learn about `JOIN` syntax! :smile:
+**But don't we have to visit two tables to get the instructor info, after 3NF normalization?** Yes, it's correct! Normalization is the process to store data appropriately in several tables, so we should visit two tables with the new design, while the old design can return `instructor-college` directly. This is why we will learn about `JOIN` syntax soon! :smile:
+
+## Part 3-4. Foreign Key : it is always great to create a `PRIMARY KEY` for each table!
+
+### The 3NF tables shown above are actually NOT perfect!!
+
+JAE sports center just hired another instructor. Now, let's see what happens in the tables.
+
+```
+Table 1 : Course Info                         Table 2 : Instructor Info
+| enrolled-course | course-fee | instructor | | instructor | instructor-college |
+| --------------- | ---------- | ---------- | | ---------- | ------------------ |
+| badminton       | $300       | Tom        | | Tom        | AAA College        |
+| swimming        | $250       | Jane       | | Jane       | BBB College        |
+| tennis          | $500       | Mike       | | Mike       | CCC University     |
+| tennis-level-2  | $300       | Mike       | | Mike       | ZZZ College        |
+| table-tennis    | $200       | Mike       |
+```
+
+What is happening? JAE sports center hired a table tennis instructor whose name is Mike! So, there are two instructors who have the same name. Then, these tables have a huge error, even though they have been **well-normalized**. We cannot distinguish Mike! To fix this issue, we can think of the solution shown below.
+
+```
+Table 1 : Course Info                         Table 2 : Instructor Info
+| enrolled-course | course-fee | instructor | | instructor  | instructor-college |
+| --------------- | ---------- | ---------- | | ----------- | ------------------ |
+| badminton       | $300       | Tom        | | Tom         | AAA College        |
+| swimming        | $250       | Jane       | | Jane        | BBB College        |
+| tennis          | $500       | Mike1      | | Mike1       | CCC University     |
+| tennis-level-2  | $300       | Mike1      | | Mike2       | ZZZ College        |
+| table-tennis    | $200       | Mike2      |
+```
+
+So, the database above fixes the duplicated name issue quite fairly by adding number to Mike. However, in reality, it is more appropriate to manage this issue by creating a primary key for each table and linking two tables using this primary key!
+
+```
+Table 1 : Course Info                                  Table 2 : Instructor Info
+| id  | enrolled-course | course-fee | instructor-id | | id  | instructor | instructor-college |
+| --- | --------------- | ---------- | ------------- | | --- | ---------- | ------------------ |
+| 1   | badminton       | $300       | 1             | | 1   | Tom        | AAA College        |
+| 2   | swimming        | $250       | 2             | | 2   | Jane       | BBB College        |
+| 3   | tennis          | $500       | 3             | | 3   | Mike       | CCC University     |
+| 4   | tennis-level-2  | $300       | 3             | | 4   | Mike       | ZZZ College        |
+| 5   | table tennis    | $200       | 4             |
+```
+
+Now, we can learn that each instructor info in Table 1 is stored as an `instructor-id`, which is `id` as a primary key for Table 2. We can manage instructor data corresponding to many courses at JAE sports center by linking `instructor-id` in Table 1 to `id` in Table 2! Even though a table has a composite primary key, it is always appropriate to create a primary key for the table, because it allows us to access any data more easily using primary key only.
+
+If a primary key in a certain table is stored in other tables, that key is called **foreign key** in these tables. For example, Table 1 includes `instructor-id` which is a primary key for Table 2! Then, `instructor-id` is a foreign key in Table 1. **Foreign key** is a very important column in database, so you can actually designate what column is a foreign key to let DBMS know clearly the relationship among tables.
+
+### Specifying `FOREIGN KEY` in a certain table
+
+We actually let our DBMS knows what columns are foreign keys, as we did when designating primary keys. Below is the query which shows how to designate foreign keys.
+
+```
+CREATE TABLE table1 (
+    id INT PRIMARY KEY,
+    enrolled-course VARCHAR(100),
+    instruction-id INT REFERENCES table2(id)
+);
+```
+
+So, the query shown above says cleary that `instruction-id` in table1 is a foreign key, which refers to `id` in table2.
+
+If you want to update what keys are foreign keys for tables which are already generated, you can do it with `ALTER TABLE`!
+
+```
+ALTER TABLE table1 ADD
+CONSTRAINT constraint_explanation FOREIGN KEY (instruction-id) REFERENCES table2(id);
+```
 
 ## Part 3-4. `JOIN` syntax
 
