@@ -11,17 +11,15 @@ Think of an object we use in Javascript. This database has the same structure ju
 | day of birth | March 15th   |
 ```
 
-`Redis` is a famous open-sourced DB which supports this Key-Value database. What you should know about `Redis` is that this is an `in-memory` database, which stores data in a RAM, not a hard disk drive (HDD). A RAM can process data much faster than HDD. So, this `Redis` can manage its data very quickly by processing the data on a RAM. That is why developers use `Redis` even though it supports a key-value pair mainly. Particularly, you might be able to make a good use of `Redis` when you should process some local data very frequently and quickly (i.e. caches)! But still, remember that `Redis` supports a key-value pair only! Newer versions of `Redis` start to support some other types of DB, but they are not popular..
+`Redis` is a popular open-source DB that supports the key-value database. One important thing to note about Redis is that it is an `in-memory` database, meaning that it stores data in RAM rather than on a hard disk drive (HDD). Since RAM can process data much faster than HDD, Redis can quickly manage its data by processing it in RAM. This is why developers often choose to use Redis, even though it primarily supports a key-value pair. Specifically, Redis is useful for processing frequently-accessed local data quickly (e.g., caches)! However, it's essential to remember that Redis mainly supports the key-value pair. While newer versions of Redis support some other types of DB, they are not as popular.
 
 ## Relational Database
 
-You already had experiences in relational database. Think of any spreadsheet you made in your daily life. That is an example of relational database. Then, why is this type of database called `relational`? The name itself actually has nothing to do with "relationship". It came from "Relation", a key math terminology in matrix and linear algebra. Apart from this fact, many developers researched how to improve the efficiency of managing this kind of database, and they figured out that it depends on how to reduce data redundancy, create great "relationships" among tables, and manage database using these "relationships". This improvement process is actually called `Normalization`, and we will learn about it soon.
+You've likely had experience using relational databases. That's exactly any spreadsheet you created and made in your daily life. But why is this type of database called `relational`? Contrary to what the name might suggest, it has nothing to do with "relationship". It derives from the mathematical term "Relation," a key concept in matrix and linear algebra. In order to improve the effciency of managing relational databases, developers have researched how to reduce data redundancy, estabilish strong "relationships" between tables, and manage databases using these "relationships". This process is actually called `Normalization`, which we will cover in Part 2.
 
-This relational database is the most popular form of database, and I think that is because this form supports a stable environment for data transaction. Many famous relational databases support some functions to secure safe transactions by sufficing `ACID` properties! We will learn about `ACID` properties in this thread, too.
+Relational databases are the most popular type of database because I think they provide a stable environment for data transaction. Many popular relational databases offer functions to secure safe transactions by satisfying `ACID` properties! ACID refers to a set of properties which a database must have to ensure data validity : `Atomicity`, `Consistency`, `Isolation`, and `Durability`.
 
-Famous relational database : `Oracle`, `mySQL`, `PostgreSQL`, `MicrosoftSQL Server`, `MariaDB`, `SQLite`, `IBM DB2`, `Google Cloud Spanner`, and etc..
-
-So, what is `ACID`? A set of properties which a database must have to guarantee data validity: `Atomicity`, `Consistency`, `Isolation`, and `Durability`.
+Famous relational databases include `Oracle`, `MySQL`, `PostgreSQL`, `MicrosoftSQL Server`, `MariaDB`, `SQLite`, `IBM DB2`, `Google Cloud Spanner`, and more..
 
 ## Graph Database
 
