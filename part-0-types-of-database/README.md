@@ -2,7 +2,9 @@
 
 ## Key-Value Database
 
-Think of an object we use in Javascript. This database has the same structure just shown as below. A `Key-Value Database` is a non-relational database that uses a key-value pair to store data. This `Key-Value Database` is used frequently to implement a simple sub-database. (More practical examples are coming below.)
+This masterbook focuses on a relational database, but it is essential to understand what a non-relational database is. A non-relational database is a type of database that does not use tables with a tabular schema of rows and columns. Instead, non-relational databases use different data models such as key-value pairs, documents, or graphs.
+
+One type of non-relational database is the `Key-Value Database`, which uses a simple structure based on key-value pairs to store data (similar to an object in JavaScript). The Key-Value Database is often used to implement a simple sub-database such as a cache or a session storage. An example of a Key-Value Database is the `Redis` DBMS, which I will cover below.
 
 ```
 | KEY          | VALUE        |
@@ -28,7 +30,3 @@ If you really want to see "relationships" among data at a glance, you might want
 Famous graph database : `Neo4j`, `Sparsity`, `OrientDB`, `ArangoDB` and etc..
 
 ## There are three more types of databases I think important; will update soon...
-
-```
-COMING SOON
-```

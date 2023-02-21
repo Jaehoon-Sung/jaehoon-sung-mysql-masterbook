@@ -18,18 +18,6 @@ In this section, I introduced the types of databases and each of their character
 - Relational Database
 - Graph Database
 
-### Graph Database
-
-If you really want to see "relationships" among data at a glance, you might want to use `Graph Database`. For example, if you log in your social media account, you can see the list of your friends. Then, if you enter one of your friends' profiles, you might see that friend's list. Or, if you manage departure/arrival status of all airports in the world, you might want to describe it using a graph database. You can even visualize the data you manage using this graph database. The language we are using to manage graph database is called `Graph Query Language`.
-
-Famous graph database : `Neo4j`, `Sparsity`, `OrientDB`, `ArangoDB` and etc..
-
-### There are three more types of databases I think important; will update soon...
-
-```
-COMING SOON
-```
-
 ## Part 1-1. Basic Syntax for mySQL (DDL)
 
 Commands shown below are called `DDL`, `Data Definition Language`.
