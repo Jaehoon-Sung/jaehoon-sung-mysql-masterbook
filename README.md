@@ -6,11 +6,11 @@ Hi, thank you for visiting this repository. I created this repository to review 
 
 \- Jaehoon Sung (Jae)
 
-### Table of Contents
+## Table of Contents
 
 Most links are redirected to READMEs in corresponding sub-folders!
 
-#### [Part 0. Types of Database](part-0-types-of-database/README.md)
+### [Part 0. Types of Database](part-0-types-of-database/README.md)
 
 In this section, I introduced the types of databases and each of their characteristics. By understanding the different types of databases, we can get a broader understanding of the database landscape, and in advance recognize that `MySQL` is just one example of a DBMS (Database Management System) that uses a relational database. After finishing the `MySQL`, you can expand your knowledge by exploring other databases that interest you, armed with the brief knowledge of different types of databases I covered here.
 
