@@ -1,6 +1,6 @@
 # Part 0. Types of Database
 
-### Key-Value Database
+## Key-Value Database
 
 Think of an object we use in Javascript. This database has the same structure just shown as below. A `Key-Value Database` is a non-relational database that uses a key-value pair to store data. This `Key-Value Database` is used frequently to implement a simple sub-database. (More practical examples are coming below.)
 
