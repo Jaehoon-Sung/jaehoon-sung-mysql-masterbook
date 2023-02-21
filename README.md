@@ -1223,6 +1223,8 @@ CONSTRAINT constraint_explanation FOREIGN KEY (instruction-id) REFERENCES table2
 
 ## Part 3-4. `JOIN` syntax
 
+So far, we learned what is `normalization`, a process to set up many tables to manage data more efficiently. Then, we know that there are many tables related to one another in a single database. This means that we cannot help but visit two or more tables to extract data from the database. Here, we will learn how to query data from two or more tables, and `JOIN` will be one of the major queries you will use!
+
 ## Part 3-5. CRUDing data
 
 ## Part 4. Procedure / Function / Index / Transaction
