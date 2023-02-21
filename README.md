@@ -10,7 +10,9 @@ Hi, thank you for visiting this repository. I created this repository to review 
 
 Most links are redirected to READMEs in corresponding sub-folders!
 
-## Part 0. Types of Database [this subtext](part-0-types-of-database/README.md)
+### Part 0. Types of Database
+
+Click the following link, if you want to learn anything shown below : [FULL LINK](part-0-types-of-database/README.md)
 
 ### Key-Value Database
 
