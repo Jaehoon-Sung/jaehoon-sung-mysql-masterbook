@@ -1,4 +1,4 @@
-## Part 0. Types of Database
+# Part 0. Types of Database
 
 ### Key-Value Database
 
