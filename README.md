@@ -1,12 +1,16 @@
 # jaehoon-sung-mysql-masterbook
 
-**Welcome message from the author**
+### Welcome message from the author
 
 Hi, thank you for visiting this repository. I created this repository to review important `mySQL` syntax and update some major TIL notes. Any feedback or comments are sincerely appreciated.
 
 \- Jaehoon Sung (Jae)
 
-## Part 0. Types of Database
+### Table of Contents
+
+Most links are redirected to READMEs in corresponding sub-folders!
+
+## Part 0. Types of Database [this subtext](part-0-types-of-database/subtext.md)
 
 ### Key-Value Database
 
