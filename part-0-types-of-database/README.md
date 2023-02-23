@@ -27,8 +27,8 @@ Famous relational databases include `Oracle`, `MySQL`, `PostgreSQL`, `MicrosoftS
 
 If you want to quickly visualize "relationships" among data, consider using a `Graph Database`. For example, when you log into your social media account, you can view your list of friends. Then, when you navigate to one of your friend's profiles, you can view their list of friends. Similarly, if you're managing the departure and arrival status of all airports worldwide, a graph database can help you model the relationships among the data. You can even use the graph database to generate visual representations of the data. The language used to query graph databases is called `Graph Query Language`.
 
-Some examples of famous graph databases include `Neo4j`, `Sparsity`, `OrientDB`, `ArangoDB` and others.. Below is one of the examples which generate visual representations using graph database(Neo4j).
+Some examples of famous graph databases include `Neo4j`, `Sparsity`, `OrientDB`, `ArangoDB` and others.. Below is one of the examples which generate visual representations using `Neo4j`.
 
-<img src="https://neo4j.com/developer/_images/graph-examples-movies-example.png"></img>
+<img src="https://neo4j.com/developer/_images/graph-examples-movies-example.png" width="300px"></img>
 
 ## There are three more types of databases I think important; will update soon...
