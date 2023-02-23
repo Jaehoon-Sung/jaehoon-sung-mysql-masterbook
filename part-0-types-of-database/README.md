@@ -29,6 +29,8 @@ If you want to quickly visualize "relationships" among data, consider using a `G
 
 Some examples of famous graph databases include `Neo4j`, `Sparsity`, `OrientDB`, `ArangoDB` and others.. Below is one of the examples which generate visual representations using `Neo4j`.
 
-<img src="https://neo4j.com/developer/_images/graph-examples-movies-example.png" width="300px"></img>
+<p align = "center">
+  <img src="https://neo4j.com/developer/_images/graph-examples-movies-example.png" width="70%"></img>
+</p>
 
 ## There are three more types of databases I think important; will update soon...
