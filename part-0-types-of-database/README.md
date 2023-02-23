@@ -51,4 +51,4 @@ Famous column-family databases include `cassandra`, `Apache HBASE`, `Google BigT
 
 ## Search Engine Database
 
-Famous search engine databases include `Elastic`, `Amazon CloudSearch`, and `Google CloudSearch`.
+`Search Engine Database` is specialized in creating indices and querying information. As the name suggests, it is optimized for services that require searching through large-scaled data content. It contains an index for each set of related documents or data, and if a search request comes into the database, the search engine database quickly queries data related to the search keyword using its index information. Famous search engine databases include `Elastic`, `Amazon CloudSearch`, and `Google CloudSearch`.

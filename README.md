@@ -6,17 +6,27 @@ Hi, thank you for visiting this repository. I created this repository to review 
 
 \- Jaehoon Sung (Jae)
 
+#### Update History
+
+- 01/03/2023, Initial Commit
+- \- 01/29/2023, Rough drafts on major concepts complete
+- \- 02/22/2023, `Part 0` Subfolder created & complete
+
 ## Table of Contents
 
 Most links are redirected to READMEs in corresponding sub-folders!
 
 ### [Part 0. Types of Database](part-0-types-of-database/README.md)
 
-In this section, I introduced the types of databases and each of their characteristics. By understanding the different types of databases, we can get a broader understanding of the database landscape, and in advance recognize that `MySQL` is just one example of a DBMS (Database Management System) that uses a relational database. After finishing the `MySQL`, you can expand your knowledge by exploring other databases that interest you, armed with the brief knowledge of different types of databases I covered here.
+In this section, I introduced the different types of databases and each of their characteristics. By understanding these types of databases, we can gain a broader understanding of the database landscape and recognize that `MySQL` is just one example of a DBMS (Database Management System) that uses a relational database. After finishing this `MySQL` masterbook, you can expand your knowledge by exploring other databases that interest you armed with the knowledge of different types of databases I covered here.
+
+I strongly recommend revisiting this section after completing the rest of this masterbook. If you return to Part 0 after learning how to use SQL, you will discover things you didn't notice before.
 
 - Key-Value Database
 - Relational Database
 - Graph Database
+- Document Database
+- Search Engine Database
 
 ## Part 1-1. Basic Syntax for mySQL (DDL)
 
