@@ -41,4 +41,14 @@ Not only do document databases provide more flexibility, but they also allow for
 
 Famous document databases include `mongoDB`, `FireStore`, and `CouchDB`.
 
-##
+## Column-Family Database
+
+Let's assume that you still want to stick with a relational database but want a little more flexibility. In that case, a `Column-Family Database` might be the solution for you. It uses a tabular format of rows and columns, but each row can have only some shared values and its own row-specific values. For example, if each row represents customer data, the first row can have name, age, and address while the second row can have name, address, and birthday. In a relational database, you would have to create a database with each name, age, address, and birthday column, and each row would have some null values in each column. However, with a column-family database, you are allowed to make changes in the columns stored in each row.
+
+Because column-family databases allow more flexibility, the existing SQL language will not be compatible with them. Column-family databases have their own syntax to query data. In addition, data in a column-family database is not normalized, and supports distributed processing, just like document databases. Personally, I think that understanding a column-family database as a mix of a relational database and a document database is enough at this point.
+
+Famous column-family databases include `cassandra`, `Apache HBASE`, `Google BigTable`, and `Amazon DynamoDB`.
+
+## Search Engine Database
+
+Famous search engine databases include `Elastic`, `Amazon CloudSearch`, and `Google CloudSearch`.
