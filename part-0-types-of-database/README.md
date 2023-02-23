@@ -2,9 +2,9 @@
 
 ## Key-Value Database
 
-This masterbook focuses on a relational database, but it is essential to understand what a non-relational database is. A non-relational database is a type of database that does not use tables with a tabular schema of rows and columns. Instead, non-relational databases use different data models such as key-value pairs, documents, or graphs.
+While this masterbook primarily focuses on relational databases, it's important to understand non-relational databases as well. A non-relational database is a type of database that does not use tables with a tabular schema of rows and columns. Instead, non-relational databases use different data models such as key-value pairs, documents, or graphs.
 
-One type of non-relational database is the `Key-Value Database`, which uses a simple structure based on key-value pairs to store data (similar to an object in JavaScript). The Key-Value Database is often used to implement a simple sub-database such as a cache or a session storage. An example of a Key-Value Database is the `Redis` DBMS, which I will cover below.
+One type of non-relational database is the `Key-Value Database`, which uses a simple structure based on key-value pairs to store data (similar to an object in JavaScript). Key-Value Databases are often used to implement simple sub-databases such as caches or session storage. An example of a Key-Value Database is the `Redis` DBMS, which I will introduce below.
 
 ```
 | KEY          | VALUE        |
@@ -17,16 +17,18 @@ One type of non-relational database is the `Key-Value Database`, which uses a si
 
 ## Relational Database
 
-You've likely had experience using relational databases. That's exactly any spreadsheet you created and made in your daily life. But why is this type of database called `relational`? Contrary to what the name might suggest, it has nothing to do with "relationship". It derives from the mathematical term "Relation," a key concept in matrix and linear algebra. In order to improve the effciency of managing relational databases, developers have researched how to reduce data redundancy, estabilish strong "relationships" between tables, and manage databases using these "relationships". This process is actually called `Normalization`, which we will cover in Part 2.
+You have likely used relational databases before, perhaps by creating a spreadsheet in your daily life! But why is this type of database called `relational`? Despite the name, it has nothing to do with "relationship." Instead, the term derives from the mathematical concept of "Relation," which is a critical concept in matrix and linear algebra. To manage relational databases more efficiently, developers have researched ways to reduce data redundancy, estabilish strong "relationships" between tables, and manage databases using these "relationships". This process is known as `Normalization`, which we will cover in Part 2.
 
-Relational databases are the most popular type of database because I think they provide a stable environment for data transaction. Many popular relational databases offer functions to secure safe transactions by satisfying `ACID` properties! ACID refers to a set of properties which a database must have to ensure data validity : `Atomicity`, `Consistency`, `Isolation`, and `Durability`.
+Relational databases are the most popular type of database because they provide a stable environment for data transaction. Many popular relational databases offer functions that ensure safe transactions by satisfying `ACID` properties! ACID refers to a set of properties which a database must have to ensure data validity : `Atomicity`, `Consistency`, `Isolation`, and `Durability`.
 
-Famous relational databases include `Oracle`, `MySQL`, `PostgreSQL`, `MicrosoftSQL Server`, `MariaDB`, `SQLite`, `IBM DB2`, `Google Cloud Spanner`, and more..
+Famous relational databases include `Oracle`, `MySQL`, `PostgreSQL`, `MicrosoftSQL Server`, `MariaDB`, `SQLite`, `IBM DB2`, `Google Cloud Spanner`, and more.. According to the StackOverflow 2022 statistics, six of the top nine databases were relational databases.
 
 ## Graph Database
 
-If you really want to see "relationships" among data at a glance, you might want to use `Graph Database`. For example, if you log in your social media account, you can see the list of your friends. Then, if you enter one of your friends' profiles, you might see that friend's list. Or, if you manage departure/arrival status of all airports in the world, you might want to describe it using a graph database. You can even visualize the data you manage using this graph database. The language we are using to manage graph database is called `Graph Query Language`.
+If you want to quickly visualize "relationships" among data, consider using a `Graph Database`. For example, when you log into your social media account, you can view your list of friends. Then, when you navigate to one of your friend's profiles, you can view their list of friends. Similarly, if you're managing the departure and arrival status of all airports worldwide, a graph database can help you model the relationships among the data. You can even use the graph database to generate visual representations of the data. The language used to query graph databases is called `Graph Query Language`.
 
-Famous graph database : `Neo4j`, `Sparsity`, `OrientDB`, `ArangoDB` and etc..
+Some examples of famous graph databases include `Neo4j`, `Sparsity`, `OrientDB`, `ArangoDB` and others.. Below is one of the examples which generate visual representations using graph database(Neo4j).
+
+<img src="https://neo4j.com/developer/_images/graph-examples-movies-example.png"></img>
 
 ## There are three more types of databases I think important; will update soon...
