@@ -33,4 +33,12 @@ Some examples of famous graph databases include `Neo4j`, `Sparsity`, `OrientDB`,
   <img src="https://neo4j.com/developer/_images/graph-examples-movies-example.png" width="70%"></img>
 </p>
 
-## There are three more types of databases I think important; will update soon...
+## Document Database
+
+A `Document Database` looks very similar to the folders you use in Windows or in Finders on Mac. Technically, these folders are called "collections," and within them, there are many "documents". Data in each document is stored in a JSON-type format. But why do we use a document database? It offers more flexibility than a relational database while still maintaining structured and hierarchical properties. For example, with a relational database, you must define what types of data will be stored in each column. However, this is not necessary when using a document database. Furthermore, you can simply add any new set of data with different contexts in existing document databases whenever you want to, which is strictly prohibited in relational databases. To make changes in a relational database, you would have to redefine the whole schema of the database or write commands to let the relational DBMS know that you want to make changes.
+
+Not only do document databases provide more flexibility, but they also allow for distributed processing and horizontal scaling, making them ideal for services that require multiple inputs/outputs. However, this added flexibility means less consistency. Since document databases are easy to update and copy/paste, each document has less consistency with others and has the potential to undermine the ACID rule. (Data in a document database is not normalized.)
+
+Famous document databases include `mongoDB`, `FireStore`, and `CouchDB`.
+
+##
