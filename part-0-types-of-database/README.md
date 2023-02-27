@@ -2,9 +2,6 @@
 
 ## Table of Contents
 
-#### [Part 0. Types of Database](#part-0-types-of-database)
-
-- [Table of Contents](#table-of-contents)
 - [Key-Value Database](#key-value-database)
 - [Relational Database](#relational-database)
 - [Graph Database](#graph-database)
