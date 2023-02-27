@@ -11,12 +11,15 @@ Hi, thank you for visiting this repository. I created this repository to review 
 - 01/03/2023, Initial Commit
 - \- 01/29/2023, Rough drafts on major concepts complete
 - \- 02/22/2023, `Part 0` Subfolder created & complete
+- 02/03/2023 \-, currently working on `Part 0` and `Part 1` revisions
 
 ## Table of Contents
 
 Most links are redirected to READMEs in corresponding sub-folders!
 
 ### [Part 0. Types of database](part-0-types-of-database/README.md)
+
+#### Must-Know database types
 
 In this section, I introduced the different types of databases and each of their characteristics. By understanding these types of databases, we can gain a broader understanding of the database landscape and recognize that `MySQL` is just one example of a DBMS (Database Management System) that uses a relational database. After finishing this `MySQL` masterbook, you can expand your knowledge by exploring other databases that interest you armed with the knowledge of different types of databases I covered here.
 
@@ -30,7 +33,7 @@ I strongly recommend revisiting this section after completing the rest of this m
 
 ### [Part 1. Creating and manipulating databases : CRUD I](part-1/README.md)
 
-#### How
+#### How to create and manipulate databases and tables!
 
 At first, this masterbook was written based on manipulating tables using DBMS. However, I decided to focus on manipulating databases using sql syntax. If you want to know how to manipulate databses using DBMS, yuu might want to learn about `mysql workbench` and `DBeaver`.
 
@@ -46,7 +49,7 @@ Here, I introduced how to create and use databases using sql syntax. In addition
 
 ### [Part 2. SQL Data Types & CRUD II](part-2/README.md)
 
-####
+#### SQL data types, and more about manipulating tables!
 
 This section is a stretch of Part 1. Here, we will revisit the same DDL (Data Definition Language) and DML (Data Management Langauge) syntax but we will learn more about constraints we use when defining tables to update data more safely and debug more easily. In addition, I also introduced SQL data types which are what you must know to query data more efficiently and accurately.
 
