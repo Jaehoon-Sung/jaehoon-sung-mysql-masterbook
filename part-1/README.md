@@ -4,7 +4,7 @@
 
 Commands shown below are called `DDL`, `Data Definition Language`.
 
-MySQL requires a semicolon (;) at the end of each SQL statement if you want to execute it. If you don't add a semicolon at the end, SQL will just wait for you, assuming that you will enter additional SQL statements before execution! In this masterbook, I have added a semicolon at the end of every statement as if I were executing SQL statements in a terminal.
+MySQL requires a semicolon (`;`) at the end of each SQL statement if you want to execute it. If you don't add a semicolon at the end, SQL will just wait for you, assuming that you will enter additional SQL statements before execution! In this masterbook, I have added a semicolon at the end of every statement as if I were executing SQL statements in a terminal.
 
 If you want to copy and paste statements from this masterbook, you should exclude the trailing semicolon before pasting them into a terminal. If you include the semicolon, SQL will run the statements immediately and may throw errors. Although it should not affect your database in most cases, you should still be careful.
 
@@ -39,7 +39,6 @@ If you want to copy and paste statements from this masterbook, you should exclud
 >
 > #### Example 1: Creating a new table named person with three columns
 >
-> Common mistake : Do **NOT** add `,` after the last column's data type. See there is **NO** comma after `age INT` in the code shown below.
 > Common mistake : **Do NOT add a comma (`,`)** after the last column's data type. There is **NO** comma after `age INT` in the code shown below.
 > Some developers write data types in lowercase, but here most of the data types are written in uppercase to clarify that they are part of SQL statements.
 >
@@ -58,28 +57,28 @@ If you want to copy and paste statements from this masterbook, you should exclud
 > **BE CAREFUL!** This operation is irreversible.
 >
 > ```
-> DROP TABLE your_table_name
+> DROP TABLE your_table_name;
 > ```
 
 ### Manage columns in a table
 
 > #### Command to create a new column in a table
 >
-> If there are already some rows on a table, each value for a new column will be `NULL` by default.
+> If there are already some rows in a table, each value for a new column will be `NULL` by default.
 >
 > ```
 > ALTER TABLE your_table_name
 > ADD your_new_column_name DATATYPE;
 > ```
 
-> #### Command to change a data type of a column
+> #### Command to change the data type of a column
 >
 > ```
 > ALTER TABLE your_table_name
 > MODIFY COLUMN your_column_name DATATYPE;
 > ```
 >
-> **BE CAREFUL!** This command does not work for all kinds of types. For example, let's assume that string values already exist in a certain column named `nickname`. Then, the data type of the `nickname` column cannot be changed into an `INT` type or some number types. So it is more desirable that we should not make any major situation where we should change data types using `MODIFY COLUMN` in SQL. In practice, DB managers create a totally new table with desired types, and copy data appropriately from the table to be changed.
+> **BE CAREFUL!** This command does not work for all types of data. For example, let's assume that string values already exist in a certain column named `nickname`. Then, the data type of the `nickname` column cannot be changed to an `INT` type or some number types. So it is more desirable that we do not make any major changes to data types using `MODIFY COLUMN` in SQL. In practice, database engineers create a completely new table with the desired types and copy data appropriately from the table to be changed.
 
 > #### Command to delete a column
 >
@@ -88,4 +87,4 @@ If you want to copy and paste statements from this masterbook, you should exclud
 > DROP COLUMN your_column_name;
 > ```
 
-## Part 3-5. CRUDing data
+## Part 1-2. `CRUD`ing data
