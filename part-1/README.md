@@ -35,13 +35,13 @@ If you want to copy and paste statements from this masterbook, you should exclud
 > );
 > ```
 >
-> The above statement is an example of the SQL syntax used to create a new table in a database. It includes the command "CREATE TABLE" followed by the desired table name (your_table_name) and a list of columns with their respective data types. The data type specifies what kind of data each column will store, such as integers, strings, or dates. We will learn what SQL data types exist in Part 2! The ellipsis (...) is not actually part of SQL statements, and it is to indicate that you can add more columns to the table if needed. Once you execute this command, the new table will be created with the specified columns and data types.
+> The above statement is an example of the SQL syntax used to create a new table in a database. It includes the command `CREATE TABLE` followed by the desired table name (your_table_name) and a list of columns with their respective data types. The data type specifies what kind of data each column will store, such as integers, strings, or dates. We will learn what SQL data types exist in Part 2! The ellipsis (...) is not actually part of SQL statements, and it is to indicate that you can add more columns to the table if needed. Once you execute this command, the new table will be created with the specified columns and data types.
 >
-> #### Example 1 : creating a new table named `person` with three columns
+> #### Example 1: Creating a new table named person with three columns
 >
-> Common Mistake : Do **NOT** add `,` after the last column's data type. See there is **NO** comma after `age INT` in the code shown below.
->
-> Some developers write data types in lowercase, but here most of data types have been written in uppercase to clarify that they are part of SQL statements.
+> Common mistake : Do **NOT** add `,` after the last column's data type. See there is **NO** comma after `age INT` in the code shown below.
+> Common mistake : Do **NOT** add a comma after the last column's data type. There should be NO comma after age INT in the code shown below.
+> Some developers write data types in lowercase, but here most of the data types are written in uppercase to clarify that they are part of SQL statements.
 >
 > ```
 > CREATE TABLE person (
@@ -50,10 +50,12 @@ If you want to copy and paste statements from this masterbook, you should exclud
 >    age INT
 > );
 > ```
+>
+> The above statement is to create a new table called `person` with three columns: `id`, `name`, and `age`. The `id` and `age` columns have a data type of INT, which stands for integer, while the `name` column has a data type of VARCHAR(100), which stands for variable-length character string with a maximum length of 100 characters.
 
 > #### Command to delete a table
 >
-> **BE CAREFUL!** You can NOT undo it.
+> **BE CAREFUL!** This operation is irreversible.
 >
 > ```
 > DROP TABLE your_table_name
