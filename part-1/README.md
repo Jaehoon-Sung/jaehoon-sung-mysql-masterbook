@@ -35,7 +35,7 @@ If you want to copy and paste statements from this masterbook, you should exclud
 > );
 > ```
 >
-> The above statement is an example of the SQL syntax used to create a new table in a database. It includes the command "CREATE TABLE" followed by the desired table name (your_table_name) and a list of columns with their respective data types. The data type specifies what kind of data each column will store, such as integers, strings, or dates. We will learn what SQL data types exist in Part 2! The ellipsis (...) is not actually part of SQL statements, but it represents that you can add more columns to the table if needed. Once you execute this command, the new table will be created with the specified columns and data types.
+> The above statement is an example of the SQL syntax used to create a new table in a database. It includes the command "CREATE TABLE" followed by the desired table name (your_table_name) and a list of columns with their respective data types. The data type specifies what kind of data each column will store, such as integers, strings, or dates. We will learn what SQL data types exist in Part 2! The ellipsis (...) is not actually part of SQL statements, and it is to indicate that you can add more columns to the table if needed. Once you execute this command, the new table will be created with the specified columns and data types.
 >
 > #### Example 1 : creating a new table named `person` with three columns
 >
