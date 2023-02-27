@@ -4,12 +4,14 @@
 
 Commands shown below are called `DDL`, `Data Definition Language`.
 
+MySQL requires a semicolon (;) at the end of each SQL statement if you want to execute it. If you don't add a semicolon at the end, SQL will just waits for you, assuming that you enter additional SQL statements before execution! In this masterbook, I added a semicolon at the end of every statement as if I would execute SQL statements on terminal.
+
 ### Create & Delete a database and a table
 
 > #### Command to create a new database
 >
 > ```
-> CREATE DATABASE your_database_name
+> CREATE DATABASE your_database_name;
 > ```
 
 > #### Command to delete a database
@@ -17,7 +19,7 @@ Commands shown below are called `DDL`, `Data Definition Language`.
 > **BE CAREFUL!** You can NOT undo it.
 >
 > ```
-> DROP DATABASE your_database_name
+> DROP DATABASE your_database_name;
 > ```
 
 > #### Command to create a new table
@@ -42,7 +44,7 @@ Commands shown below are called `DDL`, `Data Definition Language`.
 >    id INT,
 >    name VARCHAR(100),
 >    age INT
-> )
+> );
 > ```
 
 > #### Command to delete a table
