@@ -1,5 +1,10 @@
 # Part 0. Types of Database
 
+## Table of Contents
+
+- [Key-Value Database](#Key-Value-Database)
+-
+
 ## Key-Value Database
 
 While this masterbook primarily focuses on relational databases, it's important to understand non-relational databases as well. A non-relational database is a type of database that does not use tables with a tabular schema of rows and columns. Instead, non-relational databases use different data models such as key-value pairs, documents, or graphs.
