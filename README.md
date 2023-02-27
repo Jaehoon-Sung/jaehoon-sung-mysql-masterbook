@@ -28,7 +28,9 @@ I strongly recommend revisiting this section after completing the rest of this m
 - Document Database
 - Search Engine Database
 
-### [Part 1. CRUD : Creating and manipulating databases](part-1/README.md)
+### [Part 1. Creating and manipulating databases : CRUD I](part-1/README.md)
+
+#### How
 
 At first, this masterbook was written based on manipulating tables using DBMS. However, I decided to focus on manipulating databases using sql syntax. If you want to know how to manipulate databses using DBMS, yuu might want to learn about `mysql workbench` and `DBeaver`.
 
@@ -41,6 +43,15 @@ Here, I introduced how to create and use databases using sql syntax. In addition
   - Delete an existing table
 - Manage columns in a table
 - CRUDing data
+
+### [Part 2. SQL Data Types & CRUD II](part-2/README.md)
+
+####
+
+This section is a stretch of Part 1. Here, we will revisit the same DDL (Data Definition Language) and DML (Data Management Langauge) syntax but we will learn more about constraints we use when defining tables to update data more safely and debug more easily. In addition, I also introduced SQL data types which are what you must know to query data more efficiently and accurately.
+
+- SQL Data Types
+- Add Constraints to your table
 
 ## Part 2-1. Do you know **EVERYTHING** about `SELECT` for sure? :laughing:
 
