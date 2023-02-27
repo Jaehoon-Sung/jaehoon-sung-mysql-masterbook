@@ -40,7 +40,7 @@ If you want to copy and paste statements from this masterbook, you should exclud
 > #### Example 1: Creating a new table named person with three columns
 >
 > Common mistake : Do **NOT** add `,` after the last column's data type. See there is **NO** comma after `age INT` in the code shown below.
-> Common mistake : Do **NOT** add a comma after the last column's data type. There should be NO comma after age INT in the code shown below.
+> Common mistake : **Do NOT add a comma (`,`)** after the last column's data type. There is **NO** comma after `age INT` in the code shown below.
 > Some developers write data types in lowercase, but here most of the data types are written in uppercase to clarify that they are part of SQL statements.
 >
 > ```
