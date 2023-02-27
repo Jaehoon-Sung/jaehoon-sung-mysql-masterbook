@@ -120,15 +120,15 @@ CREATE TABLE person (
 > ```
 >
 > <details><summary><b>Answer</b></summary>
-
-```
-CREATE TABLE person (
-  id INT,
-  name VARCHAR(100),
-  age INT
-)
-
-```
+>
+> ```
+> CREATE TABLE person (
+>   id INT,
+>   name VARCHAR(100),
+>   age INT
+> )
+>
+> ```
 
 </details>
 
