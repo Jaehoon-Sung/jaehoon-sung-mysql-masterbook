@@ -35,9 +35,9 @@ I strongly recommend revisiting this section after completing the rest of this m
 
 #### How to create and manipulate databases and tables!
 
-At first, this masterbook was written based on manipulating tables using DBMS. However, I decided to focus on manipulating databases using SQL syntax. If you want to learn how to manipulate databases using DBMS, you might want to explore tools such as `MySQL Workbench` and `DBeaver`.
+Initially, this masterbook focused on manipulating tables using a DBMS. However, I later decided to shift the focus on manipulating databases using SQL syntax. If you are interested in learning how to manipulate databases using a DBMS, you may want to explore tools such as `MySQL Workbench` and `DBeaver`.
 
-In this part, I have introduced how to create and use databases using SQL syntax. Additionally, you will learn how to perform `CRUD` operations which stands for `Create`, `Read`, `Update`, and `Delete`! By the end of this part, you will have the skills to create and manipulate databases, tables, and data in tables.
+In this part, I have introduced how to create and use databases using SQL syntax. Additionally, you will learn how to perform `CRUD` operations which stands for `Create`, `Read`, `Update`, and `Delete`! By the end of this part, you will have acquired the skills necessary to create and manipulate databases, tables, and data in tables.
 
 - Create & Delete a database and a table
   - Create a new database

@@ -4,9 +4,11 @@
 
 Commands shown below are called `DDL`, `Data Definition Language`.
 
-MySQL requires a semicolon (;) at the end of each SQL statement if you want to execute it. If you don't add a semicolon at the end, SQL will just waits for you, assuming that you enter additional SQL statements before execution! In this masterbook, I added a semicolon at the end of every statement as if I would execute SQL statements on terminal.
+MySQL requires a semicolon (;) at the end of each SQL statement if you want to execute it. If you don't add a semicolon at the end, SQL will just wait for you, assuming that you will enter additional SQL statements before execution! In this masterbook, I have added a semicolon at the end of every statement as if I were executing SQL statements in a terminal.
 
-### Create & Delete a database and a table
+If you want to copy and paste statements from this masterbook, you should exclude the trailing semicolon before pasting them into a terminal. If you include the semicolon, SQL will run the statements immediately and may throw errors. Although it should not affect your database in most cases, you should still be careful.
+
+### Creating and Deleting a Database and a Table
 
 > #### Command to create a new database
 >
@@ -16,7 +18,7 @@ MySQL requires a semicolon (;) at the end of each SQL statement if you want to e
 
 > #### Command to delete a database
 >
-> **BE CAREFUL!** You can NOT undo it.
+> **BE CAREFUL!** You can NOT undo it, which means that this operation is irreversible!
 >
 > ```
 > DROP DATABASE your_database_name;
@@ -29,10 +31,11 @@ MySQL requires a semicolon (;) at the end of each SQL statement if you want to e
 >    column1_name DATATYPE,
 >    column2_name DATATYPE,
 >    column3_name DATATYPE,
->    ...
+> ...
 > );
+> The above statement is an example of the SQL syntax used to create a new table in a database. It includes the command "CREATE TABLE" followed by the desired table name (your_table_name) and a list of columns with their respective data types. The data type specifies what kind of data each column will store, such as integers, strings, or dates. We will learn what SQL data types exist in Part 2! The ellipsis (...) is not actually part of SQL statements, but it represents that you can add more columns to the table if needed. Once you execute this command, the new table will be created with the specified columns and data types.
 > ```
->
+
 > #### Example 1 : creating a new table named `person` with three columns
 >
 > Common Mistake : Do **NOT** add `,` after the last column's data type. See there is **NO** comma after `age INT` in the code shown below.
