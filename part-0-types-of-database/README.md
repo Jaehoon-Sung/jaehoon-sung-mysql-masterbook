@@ -2,8 +2,14 @@
 
 ## Table of Contents
 
-- [Key-Value Database](#Key-Value-Database)
--
+- [Part 0. Types of Database](#part-0-types-of-database)
+  * [Table of Contents](#table-of-contents)
+  * [Key-Value Database](#key-value-database)
+  * [Relational Database](#relational-database)
+  * [Graph Database](#graph-database)
+  * [Document Database](#document-database)
+  * [Column-Family Database](#column-family-database)
+  * [Search Engine Database](#search-engine-database)KS
 
 ## Key-Value Database
 
