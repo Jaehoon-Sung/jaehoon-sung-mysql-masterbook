@@ -1,5 +1,28 @@
 # Part 1. Creating and manipulating databases : CRUD I
 
+## Table of Contents
+
+- [Part 1-1. MySQL Basic Syntax (Data Definition Language)](#part-1-1-mysql-basic-syntax--data-definition-language-)
+  - [Creating and Deleting a Database and a Table](#creating-and-deleting-a-database-and-a-table)
+    - [Command to create a new database](#command-to-create-a-new-database)
+    - [Command to delete a database](#command-to-delete-a-database)
+    - [Command to create a new table](#command-to-create-a-new-table)
+    - [Example 1: Creating a new table named person with three columns](#example-1--creating-a-new-table-named-person-with-three-columns)
+    - [Command to delete a table](#command-to-delete-a-table)
+  - [Manage columns in a table](#manage-columns-in-a-table)
+    - [Command to create a new column in a table](#command-to-create-a-new-column-in-a-table)
+    - [Command to change the data type of a column](#command-to-change-the-data-type-of-a-column)
+    - [Command to delete a column](#command-to-delete-a-column)
+- [Part 1-2. `CRUD`ing data](#part-1-2--crud-ing-data)
+  - [`INSERT` : Command to insert data and copy data from another table](#-insert----command-to-insert-data-and-copy-data-from-another-table)
+  - [`SELECT` : Command to see the list of tables](#-select----command-to-see-the-list-of-tables)
+    - [Displaying every column of a table](#displaying-every-column-of-a-table)
+    - [Displaying a certain column you want to display only](#displaying-a-certain-column-you-want-to-display-only)
+    - [Displaying two or more columns is possible..](#displaying-two-or-more-columns-is-possible)
+  - [`UPDATE` : Command to update existing data](#-update----command-to-update-existing-data)
+  - [`DELETE` : Command to delete existing data](#-delete----command-to-delete-existing-data)
+  - [PRO-TIP #1 : Will we want to allow everyone to CRUD data?](#pro-tip--1---will-we-want-to-allow-everyone-to-crud-data-)
+
 ## Part 1-1. MySQL Basic Syntax (Data Definition Language)
 
 Commands shown below are called `DDL`, `Data Definition Language`.
