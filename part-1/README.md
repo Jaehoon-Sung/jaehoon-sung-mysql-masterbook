@@ -93,7 +93,7 @@ So far, you have learned how to create and update databases and tables, but you 
 
 As a review, let's create a table called `person` with three columns: `id` (integer), `name` (varchar(100)), and `age` (integer). We will use this table to CRUD data. This is the same table as the example shown above. Below is my answer, but make sure to try it out yourself first. SQL is all about practice!
 
-<details><summary>My Answer</summary>
+<details><summary><b>Answer</b></summary>
 
 ```
 CREATE TABLE person (
