@@ -1,6 +1,6 @@
-# Part 1.
+# Part 1. Creating and manipulating databases : CRUD I
 
-## Part 1-1. Basic Syntax for mySQL (DDL)
+## Part 1-1. MySQL Basic Syntax (Data Definition Language)
 
 Commands shown below are called `DDL`, `Data Definition Language`.
 
@@ -88,3 +88,17 @@ If you want to copy and paste statements from this masterbook, you should exclud
 > ```
 
 ## Part 1-2. `CRUD`ing data
+
+So far, you have learned how to create and update databases and tables, but you have not yet entered any data into them. In other words, you have created databases and tables and defined what types of data should be stored in each column, but you have not stored any data yet. Therefore, if you list the data stored in the tables, you will see only empty tables. From now on, we will learn how to insert(create) new data into the tables, read stored data, update existing data, and even delete data from the tables.
+
+As a review, let's create a table called `person` with three columns: `id` (integer), `name` (varchar(100)), and `age` (integer). We will use this table to CRUD data. This is the same table as the example shown above. Below is my answer, but make sure to try it out yourself first. SQL is all about practice!
+
+<details><summary>My Answer</summary>
+```
+CREATE TABLE person (
+  id INT,
+  name VARCHAR(100),
+  age INT
+) 
+```
+</details>
