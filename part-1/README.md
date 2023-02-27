@@ -104,3 +104,50 @@ CREATE TABLE person (
 ```
 
 </details>
+
+### `INSERT` : Command to insert data and copy data from another table
+
+>
+
+### `SELECT` : Command to see the list of tables
+
+`SELECT` will be the first SQL query everyone learns. We will start to learn a lot of SQL statements in Part 3, but here let's learn this basic command to see if the data were really inserted into our `person` table!
+
+> #### Displaying every column of a table
+>
+> ```
+> SELECT * FROM your_table_name
+> ```
+>
+> <details><summary><b>Answer</b></summary>
+
+```
+CREATE TABLE person (
+  id INT,
+  name VARCHAR(100),
+  age INT
+)
+
+```
+
+</details>
+
+> #### Displaying a certain column you want to display only
+>
+> ```
+> SELECT column_name_you_want_to_display FROM your_table_name
+> ```
+>
+> What would be the query statement to display `product` column only? Try it for yourself!
+
+> #### Displaying two or more columns is possible..
+>
+> ```
+> SELECT column1, column2 FROM your_table_name
+> ```
+
+### `UPDATE` : Command to update existing data
+
+### `DELETE` : Command to delete existing data
+
+### PRO-TIP #1 : Will we want to allow everyone to CRUD data?
